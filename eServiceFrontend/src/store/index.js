@@ -27,4 +27,16 @@ const store = {}
   })
 }
 
+/* Save brand */
+ store.saveHotel = (hotel) => {
+  return new Promise((resolve, reject) => {
+    api.hotels.save(hotel)
+      .then(console.log("Edited."))
+      .catch(err => {
+        events.$emit('error', err)
+        reject(err)
+      })
+  })
+}
+
 export default store

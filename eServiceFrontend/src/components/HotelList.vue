@@ -4,6 +4,12 @@
     <select v-model="selectedHotel">
         <option v-for="item in items" v-bind:value="item.ID">{{item.Hotel_Name}}</option>
     </select>
+    <input v-model="editHotelName" placeholder="edit me">
+    {{editHotelName}}
+
+    <div>
+      <input type="submit" @click="saveHotel" value="Save" class="btn btn-default" /> | 
+    </div>
   </div>
 </template>
 
@@ -20,10 +26,20 @@ export default {
     return {
       hotelName : 'Hotel Name :',
       items:[],
-      selectedHotel:''
+      selectedHotel:'',
+      editHotelName:''
     }
   },
   methods: {
+    saveHotel() {
+
+      var hotel = {
+        ID : this.selectedHotel,
+        Hotel_Name : this.editHotelName
+      };
+      store.saveHotel(hotel);
+    },
+
     loadHotels() {
       store.fetchHotels().then(result => {
       this.items = result;
