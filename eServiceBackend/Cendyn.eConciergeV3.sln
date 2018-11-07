@@ -1,0 +1,101 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Infrastructure", "0.Infrastructure", "{4B3E5D97-4145-4B8B-9DD3-DE0F5E2D5EE3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Data", "1.Data", "{B4FA4143-AEE1-49D6-80A0-33499A9E1D9B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Domain", "2.Domain", "{0E138C03-B060-405C-8AC0-878C57976263}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.UI", "3.UI", "{FD9CDB71-0712-4F14-8F38-2C5BE2D60B85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cendyn.eConcierge.Core", "Cendyn.eConcierge.Core\Cendyn.eConcierge.Core.csproj", "{DB5BCAF3-D837-4481-AB99-C0B5E37FD502}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cendyn.eConcierge.UnitTest", "Cendyn.eConcierge.UnitTest\Cendyn.eConcierge.UnitTest.csproj", "{5BE0D213-2A1C-4F31-A72A-67DAF1FC7904}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cendyn.eConcierge.Data", "Cendyn.eConcierge.Data\Cendyn.eConcierge.Data.csproj", "{AD227C16-92B7-4AC4-9661-D28CF3265A08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cendyn.eConcierge.EntityModel", "Cendyn.eConcierge.EntityModel\Cendyn.eConcierge.EntityModel.csproj", "{7B6B7D55-E543-45D9-97D7-D552F621A2A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cendyn.eConcierge.Service", "Cendyn.eConcierge.Service\Cendyn.eConcierge.Service.csproj", "{3F5AA319-42E7-4816-9D5D-AB6A339DD050}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{84A31197-9D9E-4F49-8165-3AD6B8D27F41}"
+	ProjectSection(SolutionItems) = preProject
+		WebEssentials-Settings.json = WebEssentials-Settings.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{74DA8D98-920B-4D0A-89C5-FF66A451288B}"
+	ProjectSection(SolutionItems) = preProject
+		Lib\Cendyn.eContact.Infrastructure.Encryption.dll = Lib\Cendyn.eContact.Infrastructure.Encryption.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cendyn.eConcierge.UICommon", "Cendyn.eConcierge.UICommon\Cendyn.eConcierge.UICommon.csproj", "{BFEF5D31-A90E-44B4-9381-9447B1F5FFB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cendyn.eConcierge.WebAPI", "Cendyn.eConcierge.WebAPI\Cendyn.eConcierge.WebAPI.csproj", "{E7895EDA-0090-430E-B337-4E7FFA966FB8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		QA|Any CPU = QA|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB5BCAF3-D837-4481-AB99-C0B5E37FD502}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB5BCAF3-D837-4481-AB99-C0B5E37FD502}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB5BCAF3-D837-4481-AB99-C0B5E37FD502}.QA|Any CPU.ActiveCfg = QA|Any CPU
+		{DB5BCAF3-D837-4481-AB99-C0B5E37FD502}.QA|Any CPU.Build.0 = QA|Any CPU
+		{DB5BCAF3-D837-4481-AB99-C0B5E37FD502}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB5BCAF3-D837-4481-AB99-C0B5E37FD502}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BE0D213-2A1C-4F31-A72A-67DAF1FC7904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BE0D213-2A1C-4F31-A72A-67DAF1FC7904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BE0D213-2A1C-4F31-A72A-67DAF1FC7904}.QA|Any CPU.ActiveCfg = QA|Any CPU
+		{5BE0D213-2A1C-4F31-A72A-67DAF1FC7904}.QA|Any CPU.Build.0 = QA|Any CPU
+		{5BE0D213-2A1C-4F31-A72A-67DAF1FC7904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BE0D213-2A1C-4F31-A72A-67DAF1FC7904}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD227C16-92B7-4AC4-9661-D28CF3265A08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD227C16-92B7-4AC4-9661-D28CF3265A08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD227C16-92B7-4AC4-9661-D28CF3265A08}.QA|Any CPU.ActiveCfg = QA|Any CPU
+		{AD227C16-92B7-4AC4-9661-D28CF3265A08}.QA|Any CPU.Build.0 = QA|Any CPU
+		{AD227C16-92B7-4AC4-9661-D28CF3265A08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD227C16-92B7-4AC4-9661-D28CF3265A08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B6B7D55-E543-45D9-97D7-D552F621A2A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B6B7D55-E543-45D9-97D7-D552F621A2A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B6B7D55-E543-45D9-97D7-D552F621A2A8}.QA|Any CPU.ActiveCfg = QA|Any CPU
+		{7B6B7D55-E543-45D9-97D7-D552F621A2A8}.QA|Any CPU.Build.0 = QA|Any CPU
+		{7B6B7D55-E543-45D9-97D7-D552F621A2A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B6B7D55-E543-45D9-97D7-D552F621A2A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F5AA319-42E7-4816-9D5D-AB6A339DD050}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F5AA319-42E7-4816-9D5D-AB6A339DD050}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F5AA319-42E7-4816-9D5D-AB6A339DD050}.QA|Any CPU.ActiveCfg = QA|Any CPU
+		{3F5AA319-42E7-4816-9D5D-AB6A339DD050}.QA|Any CPU.Build.0 = QA|Any CPU
+		{3F5AA319-42E7-4816-9D5D-AB6A339DD050}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F5AA319-42E7-4816-9D5D-AB6A339DD050}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFEF5D31-A90E-44B4-9381-9447B1F5FFB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFEF5D31-A90E-44B4-9381-9447B1F5FFB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFEF5D31-A90E-44B4-9381-9447B1F5FFB9}.QA|Any CPU.ActiveCfg = QA|Any CPU
+		{BFEF5D31-A90E-44B4-9381-9447B1F5FFB9}.QA|Any CPU.Build.0 = QA|Any CPU
+		{BFEF5D31-A90E-44B4-9381-9447B1F5FFB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFEF5D31-A90E-44B4-9381-9447B1F5FFB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7895EDA-0090-430E-B337-4E7FFA966FB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7895EDA-0090-430E-B337-4E7FFA966FB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7895EDA-0090-430E-B337-4E7FFA966FB8}.QA|Any CPU.ActiveCfg = Release|Any CPU
+		{E7895EDA-0090-430E-B337-4E7FFA966FB8}.QA|Any CPU.Build.0 = Release|Any CPU
+		{E7895EDA-0090-430E-B337-4E7FFA966FB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7895EDA-0090-430E-B337-4E7FFA966FB8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DB5BCAF3-D837-4481-AB99-C0B5E37FD502} = {4B3E5D97-4145-4B8B-9DD3-DE0F5E2D5EE3}
+		{5BE0D213-2A1C-4F31-A72A-67DAF1FC7904} = {4B3E5D97-4145-4B8B-9DD3-DE0F5E2D5EE3}
+		{AD227C16-92B7-4AC4-9661-D28CF3265A08} = {B4FA4143-AEE1-49D6-80A0-33499A9E1D9B}
+		{7B6B7D55-E543-45D9-97D7-D552F621A2A8} = {B4FA4143-AEE1-49D6-80A0-33499A9E1D9B}
+		{3F5AA319-42E7-4816-9D5D-AB6A339DD050} = {0E138C03-B060-405C-8AC0-878C57976263}
+		{74DA8D98-920B-4D0A-89C5-FF66A451288B} = {4B3E5D97-4145-4B8B-9DD3-DE0F5E2D5EE3}
+		{BFEF5D31-A90E-44B4-9381-9447B1F5FFB9} = {FD9CDB71-0712-4F14-8F38-2C5BE2D60B85}
+		{E7895EDA-0090-430E-B337-4E7FFA966FB8} = {FD9CDB71-0712-4F14-8F38-2C5BE2D60B85}
+	EndGlobalSection
+EndGlobal

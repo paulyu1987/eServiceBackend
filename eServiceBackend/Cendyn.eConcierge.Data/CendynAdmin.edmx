@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CendynAdminModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CendynAdmin.dbo.eConcierge_Company' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="eConcierge_Company">
+          <Key>
+            <PropertyRef Name="PropertyCode" />
+            <PropertyRef Name="CompanyName" />
+            <PropertyRef Name="Active" />
+          </Key>
+          <Property Name="PropertyCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DotNetConnString_eConcierge" Type="varchar" MaxLength="200" />
+          <Property Name="DotNetConnString_eInsight" Type="varchar" MaxLength="200" />
+          <Property Name="DomainName_eConcierge" Type="varchar" MaxLength="100" />
+          <Property Name="DomainName_eConcierge_Mobile" Type="varchar" MaxLength="100" />
+          <Property Name="ConciergeLink" Type="varchar" MaxLength="200" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="DotNetConnString_eInsightCRM" Type="varchar" MaxLength="200" />
+          <Property Name="MasterPropertyCode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CendynAdmin.dbo.eUpgrade_Company' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="eUpgrade_Company">
+          <Key>
+            <PropertyRef Name="PropertyCode" />
+            <PropertyRef Name="CompanyName" />
+            <PropertyRef Name="Active" />
+          </Key>
+          <Property Name="PropertyCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DotNetConnString_eUpgrade" Type="varchar" MaxLength="200" />
+          <Property Name="DomainName_eUpgrade" Type="varchar" MaxLength="100" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="MasterPropertyCode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="CendynAdminModelStoreContainer">
+          <EntitySet Name="eConcierge_Company" EntityType="Self.eConcierge_Company" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [eConcierge_Company].[PropertyCode] AS [PropertyCode], 
+    [eConcierge_Company].[CompanyName] AS [CompanyName], 
+    [eConcierge_Company].[DotNetConnString_eConcierge] AS [DotNetConnString_eConcierge], 
+    [eConcierge_Company].[DotNetConnString_eInsight] AS [DotNetConnString_eInsight], 
+    [eConcierge_Company].[DomainName_eConcierge] AS [DomainName_eConcierge], 
+    [eConcierge_Company].[DomainName_eConcierge_Mobile] AS [DomainName_eConcierge_Mobile], 
+    [eConcierge_Company].[ConciergeLink] AS [ConciergeLink], 
+    [eConcierge_Company].[Active] AS [Active], 
+    [eConcierge_Company].[DotNetConnString_eInsightCRM] AS [DotNetConnString_eInsightCRM], 
+    [eConcierge_Company].[MasterPropertyCode] AS [MasterPropertyCode]
+    FROM [dbo].[eConcierge_Company] AS [eConcierge_Company]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="eUpgrade_Company" EntityType="Self.eUpgrade_Company" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [eUpgrade_Company].[PropertyCode] AS [PropertyCode], 
+    [eUpgrade_Company].[CompanyName] AS [CompanyName], 
+    [eUpgrade_Company].[DotNetConnString_eUpgrade] AS [DotNetConnString_eUpgrade], 
+    [eUpgrade_Company].[DomainName_eUpgrade] AS [DomainName_eUpgrade], 
+    [eUpgrade_Company].[Active] AS [Active], 
+    [eUpgrade_Company].[MasterPropertyCode] AS [MasterPropertyCode]
+    FROM [dbo].[eUpgrade_Company] AS [eUpgrade_Company]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CendynAdminModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="eConcierge_Company">
+          <Key>
+            <PropertyRef Name="PropertyCode" />
+            <PropertyRef Name="CompanyName" />
+            <PropertyRef Name="Active" />
+          </Key>
+          <Property Name="PropertyCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DotNetConnString_eConcierge" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DotNetConnString_eInsight" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DomainName_eConcierge" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DomainName_eConcierge_Mobile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ConciergeLink" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="DotNetConnString_eInsightCRM" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MasterPropertyCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="CendynAdminEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="eConcierge_Company" EntityType="Self.eConcierge_Company" />
+          <EntitySet Name="eUpgrade_Company" EntityType="CendynAdminModel.eUpgrade_Company" />
+        </EntityContainer>
+        <EntityType Name="eUpgrade_Company">
+          <Key>
+            <PropertyRef Name="PropertyCode" />
+            <PropertyRef Name="CompanyName" />
+            <PropertyRef Name="Active" />
+          </Key>
+          <Property Name="PropertyCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DotNetConnString_eUpgrade" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DomainName_eUpgrade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="MasterPropertyCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CendynAdminModelStoreContainer" CdmEntityContainer="CendynAdminEntities">
+          <EntitySetMapping Name="eConcierge_Company">
+            <EntityTypeMapping TypeName="CendynAdminModel.eConcierge_Company">
+              <MappingFragment StoreEntitySet="eConcierge_Company">
+                <ScalarProperty Name="MasterPropertyCode" ColumnName="MasterPropertyCode" />
+                <ScalarProperty Name="PropertyCode" ColumnName="PropertyCode" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="DotNetConnString_eConcierge" ColumnName="DotNetConnString_eConcierge" />
+                <ScalarProperty Name="DotNetConnString_eInsight" ColumnName="DotNetConnString_eInsight" />
+                <ScalarProperty Name="DomainName_eConcierge" ColumnName="DomainName_eConcierge" />
+                <ScalarProperty Name="DomainName_eConcierge_Mobile" ColumnName="DomainName_eConcierge_Mobile" />
+                <ScalarProperty Name="ConciergeLink" ColumnName="ConciergeLink" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="DotNetConnString_eInsightCRM" ColumnName="DotNetConnString_eInsightCRM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eUpgrade_Company">
+            <EntityTypeMapping TypeName="CendynAdminModel.eUpgrade_Company">
+              <MappingFragment StoreEntitySet="eUpgrade_Company">
+                <ScalarProperty Name="MasterPropertyCode" ColumnName="MasterPropertyCode" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="DomainName_eUpgrade" ColumnName="DomainName_eUpgrade" />
+                <ScalarProperty Name="DotNetConnString_eUpgrade" ColumnName="DotNetConnString_eUpgrade" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="PropertyCode" ColumnName="PropertyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

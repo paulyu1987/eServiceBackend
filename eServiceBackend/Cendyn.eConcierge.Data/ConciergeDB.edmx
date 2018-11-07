@@ -1,0 +1,2480 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ConciergeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ConciergeHotelAccessMapping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConciergeID" Type="varchar" MaxLength="50" />
+          <Property Name="HotelCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ActiveYN" Type="bit" />
+          <Property Name="InsertDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="ReqstEmailFlg" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConciergeLogin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConciergeID" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="400" />
+          <Property Name="HOTEL_CODE" Type="nvarchar" MaxLength="50" />
+          <Property Name="password1" Type="varchar" MaxLength="100" />
+          <Property Name="FName" Type="varchar" MaxLength="50" />
+          <Property Name="LName" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="AccessLevel" Type="int" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="ReqstEmailFlg" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CurrencyConvert">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Symbol" Type="nvarchar" MaxLength="50" />
+          <Property Name="USD_to_Rate" Type="decimal" Precision="9" Scale="5" Nullable="false" />
+          <Property Name="CurrencyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EncodedSymbol" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hotel_Code" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DicBrand">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="BrandName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ChainID" Type="int" Nullable="false" />
+          <Property Name="SortOrder" Type="smallint" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DicChain">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChainCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ChainName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EmailTemplate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hotel_Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="languageID" Type="int" Nullable="false" />
+          <Property Name="ShowWeatherYN" Type="bit" Nullable="false" />
+          <Property Name="ShowRequestYN" Type="bit" Nullable="false" />
+          <Property Name="ConciergeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="HasMultiCancelPolicy" Type="bit" Nullable="false" />
+          <Property Name="TemplateCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TemplateName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Template" Type="nvarchar(max)" />
+          <Property Name="eMailType" Type="varchar" MaxLength="50" />
+          <Property Name="HtmlYN" Type="bit" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="500" />
+          <Property Name="ActiveYN" Type="bit" Nullable="false" />
+          <Property Name="insertDate" Type="datetime" />
+          <Property Name="updateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="eUpgradeBrandCssMapping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandCode" Type="varchar" MaxLength="20" />
+          <Property Name="BrandCss" Type="varchar" MaxLength="200" />
+          <Property Name="HotelCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDefault" Type="bit" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="InsertBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'eConcierge_SandyLaneResort_QA.dbo.eUpgradeInventory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="eUpgradeInventory">
+          <Key>
+            <PropertyRef Name="HotelCode" />
+            <PropertyRef Name="RoomCode" />
+            <PropertyRef Name="StayDate" />
+          </Key>
+          <Property Name="HotelCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="RoomCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="StayDate" Type="date" Nullable="false" />
+          <Property Name="TotalBookedRoom" Type="smallint" />
+          <Property Name="InsertDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="eUpgradeRequest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="loginConfirmationNum" Type="varchar" MaxLength="100" />
+          <Property Name="HotelCode" Type="varchar" MaxLength="20" />
+          <Property Name="BookedRoomType" Type="varchar" MaxLength="20" />
+          <Property Name="UpgradeRoomType" Type="varchar" MaxLength="20" />
+          <Property Name="UpgradeCost" Type="money" />
+          <Property Name="UpgradeStatus" Type="varchar" MaxLength="20" />
+          <Property Name="DecisionPerson" Type="varchar" MaxLength="50" />
+          <Property Name="OXIDateSent" Type="datetime" />
+          <Property Name="OXIMessageID" Type="varchar" MaxLength="20" />
+          <Property Name="OXIDirty" Type="bit" />
+          <Property Name="OXITransactioncode" Type="varchar" MaxLength="50" />
+          <Property Name="InsertDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="TransactionCode" Type="varchar" MaxLength="50" />
+          <Property Name="UpgradeType" Type="varchar" MaxLength="50" />
+          <Property Name="PerNightCharge" Type="bit" />
+          <Property Name="OXIStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="OXIReceiptDate" Type="datetime" />
+          <Property Name="OXIComment" Type="nvarchar" MaxLength="500" />
+          <Property Name="TotalUpgradeFees" Type="money" Nullable="false" />
+          <Property Name="RequestID" Type="varchar" MaxLength="50" />
+          <Property Name="PackageCode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="eUpgradeTransactionCode">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CendynPropertyID" Type="int" />
+          <Property Name="HotelCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpgradeType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PerNightCharge" Type="bit" Nullable="false" />
+          <Property Name="TransactionCode" Type="varchar" MaxLength="50" />
+          <Property Name="ActiveYN" Type="bit" Nullable="false" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="UpgradeTypeDisplayName" Type="varchar" MaxLength="100" />
+          <Property Name="PackageCode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EventCategory">
+          <Key>
+            <PropertyRef Name="Hotel_Code" />
+            <PropertyRef Name="CategoryValue" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hotel_Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Category" Type="varchar" MaxLength="50" />
+          <Property Name="CategoryValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CategoryDisplayName" Type="varchar" MaxLength="50" />
+          <Property Name="CategoryDisplayName_Admin" Type="nvarchar" MaxLength="50" />
+          <Property Name="CategoryType" Type="nvarchar" MaxLength="50" />
+          <Property Name="SortOrder" Type="smallint" />
+          <Property Name="EmailSender" Type="varchar" MaxLength="100" />
+          <Property Name="EmailRecipient" Type="varchar" MaxLength="200" />
+          <Property Name="EmailSubject" Type="varchar" MaxLength="100" />
+          <Property Name="EmailBody" Type="varchar" MaxLength="100" />
+          <Property Name="CategoryURL" Type="varchar" MaxLength="50" />
+          <Property Name="ImageIcon" Type="varchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="SortOrder2" Type="smallint" />
+          <Property Name="eVisitor" Type="bit" Nullable="false" />
+          <Property Name="hasGroup" Type="bit" />
+          <Property Name="seasonal" Type="bit" />
+          <Property Name="Event5pmEmail" Type="varchar" MaxLength="200" />
+          <Property Name="Event5pmEmailGreeting" Type="nvarchar(max)" />
+          <Property Name="Event5pmDate" Type="date" Nullable="false" />
+          <Property Name="Event5pmTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Event5pmTimeRange" Type="int" Nullable="false" />
+          <Property Name="Event5pmEmailSubject" Type="varchar" MaxLength="200" />
+          <Property Name="IsCompendium" Type="bit" Nullable="false" />
+          <Property Name="GratuityYN" Type="bit" Nullable="false" />
+          <Property Name="CutOffMinutes" Type="int" />
+          <Property Name="CutOffExceedMessage" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="EventDesc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="prePublishID" Type="int" />
+          <Property Name="LanguageID" Type="int" Nullable="false" />
+          <Property Name="ParentLevelID" Type="int" />
+          <Property Name="Hotel_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="EventCategory" Type="nvarchar" MaxLength="50" />
+          <Property Name="EventName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EventDescription" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Yardage" Type="nvarchar" MaxLength="1500" />
+          <Property Name="Hours" Type="nvarchar" MaxLength="1500" />
+          <Property Name="Image" Type="nvarchar" MaxLength="100" />
+          <Property Name="CurrencyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="money" />
+          <Property Name="DisplayPriceYN" Type="bit" />
+          <Property Name="ReservationYN" Type="bit" />
+          <Property Name="CancellationTerm" Type="nvarchar(max)" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="ActiveYN" Type="bit" />
+          <Property Name="ContentNo" Type="bit" Nullable="false" />
+          <Property Name="insertDate" Type="datetime" />
+          <Property Name="updateDate" Type="datetime" />
+          <Property Name="RevenuePP" Type="bit" />
+          <Property Name="seasonal" Type="bit" />
+          <Property Name="EventGroupId" Type="int" />
+          <Property Name="OTRestaurantID" Type="int" />
+          <Property Name="IsOpenTable" Type="bit" Nullable="false" />
+          <Property Name="IsTitle" Type="bit" Nullable="false" />
+          <Property Name="Duration" Type="nvarchar" MaxLength="20" />
+          <Property Name="HasQuantity" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FGuest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="uniqueidentifier" />
+          <Property Name="LoginConfirmationNum" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ConfirmationNum" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="HOTEL_CODE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="10" />
+          <Property Name="Title" Type="varchar" MaxLength="150" />
+          <Property Name="FName" Type="varchar" MaxLength="50" />
+          <Property Name="LName" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="ArrivalDate" Type="datetime" />
+          <Property Name="Arrival_Estimated_Time" Type="varchar" MaxLength="50" />
+          <Property Name="DepartureDate" Type="datetime" />
+          <Property Name="GPCC_Num" Type="varchar" MaxLength="20" />
+          <Property Name="Preferences_Desc" Type="varchar" MaxLength="50" />
+          <Property Name="EmailOptOut" Type="bit" />
+          <Property Name="Adults_Num" Type="smallint" />
+          <Property Name="Children_Num" Type="smallint" />
+          <Property Name="RateType" Type="varchar" MaxLength="100" />
+          <Property Name="Rate_Plan_Text" Type="nvarchar(max)" />
+          <Property Name="QuotedRate" Type="float" />
+          <Property Name="Package_Flag" Type="varchar" MaxLength="10" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" />
+          <Property Name="RoomType" Type="varchar" MaxLength="100" />
+          <Property Name="RoomType_Desc" Type="varchar" MaxLength="500" />
+          <Property Name="PKG" Type="varchar" MaxLength="100" />
+          <Property Name="CXL" Type="datetime" />
+          <Property Name="CXLPolicyType" Type="varchar" MaxLength="100" />
+          <Property Name="ReservationDate" Type="datetime" />
+          <Property Name="ItinerarySent" Type="bit" Nullable="false" />
+          <Property Name="SevenDaysSent" Type="bit" Nullable="false" />
+          <Property Name="SevenDaysSentQA" Type="bit" />
+          <Property Name="NeedToResend" Type="bit" Nullable="false" />
+          <Property Name="IsConfirmSent" Type="bit" Nullable="false" />
+          <Property Name="IsConfirmSentQA" Type="bit" Nullable="false" />
+          <Property Name="CancellationSent" Type="bit" Nullable="false" />
+          <Property Name="ImportDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="NonGuest" Type="bit" />
+          <Property Name="DoNotSend_Confirm" Type="bit" Nullable="false" />
+          <Property Name="CXLNumber" Type="varchar" MaxLength="50" />
+          <Property Name="market" Type="nvarchar" MaxLength="50" />
+          <Property Name="SourceStayID" Type="uniqueidentifier" />
+          <Property Name="Departure_Estimated_Time" Type="varchar" MaxLength="50" />
+          <Property Name="eMailType" Type="varchar" MaxLength="50" />
+          <Property Name="RateSuppressCode" Type="varchar" MaxLength="50" />
+          <Property Name="eMailSuppressCode" Type="varchar" MaxLength="50" />
+          <Property Name="AcknowledgementNum" Type="varchar" MaxLength="100" />
+          <Property Name="DepPolicy" Type="varchar" MaxLength="100" />
+          <Property Name="DepReqAmt" Type="varchar" MaxLength="20" />
+          <Property Name="DepReqDate" Type="varchar" MaxLength="30" />
+          <Property Name="DepRecdAmt" Type="varchar" MaxLength="20" />
+          <Property Name="DepForfeited" Type="varchar" MaxLength="20" />
+          <Property Name="ClientStatus" Type="varchar" MaxLength="20" />
+          <Property Name="Source_Of_Business" Type="varchar" MaxLength="20" />
+          <Property Name="Group_Reservation" Type="varchar" MaxLength="100" />
+          <Property Name="Rooms_Num" Type="smallint" />
+          <Property Name="ClientType" Type="varchar" MaxLength="50" />
+          <Property Name="Source" Type="int" Nullable="false" />
+          <Property Name="PreferredLanguage" Type="varchar" MaxLength="20" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ConfirmationNumOld" Type="nvarchar" MaxLength="100" />
+          <Property Name="LoginConfirmationNumOld" Type="nvarchar" MaxLength="100" />
+          <Property Name="CRMStayId" Type="int" />
+          <Property Name="CRMCustomerId" Type="int" />
+          <Property Name="CRMResStatus" Type="varchar" MaxLength="10" />
+          <Property Name="SMSNotification" Type="bit" Nullable="false" />
+          <Property Name="RoomNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="AverageDailyRate" Type="money" />
+          <Property Name="NightsOfStay" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="LTDTotalRev" Type="money" />
+          <Property Name="VIPCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="MembershipID" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpgradeFees" Type="money" Nullable="false" />
+          <Property Name="CentralResNum" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Guest">
+          <Key>
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CellPhoneNumber" Type="varchar" MaxLength="20" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="GuestPlanner">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LookupID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RequestID" Type="varchar" MaxLength="50" />
+          <Property Name="ConfirmationNum" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LoginConfirmationNum" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Hotel_Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Event" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+          <Property Name="DescID" Type="nvarchar" MaxLength="500" />
+          <Property Name="EventDate" Type="datetime" />
+          <Property Name="EventTime" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="300" />
+          <Property Name="NumberPeople" Type="int" />
+          <Property Name="VendorID" Type="int" />
+          <Property Name="RequestTypeID" Type="int" />
+          <Property Name="Other1" Type="varchar" MaxLength="200" />
+          <Property Name="Other2" Type="varchar" MaxLength="200" />
+          <Property Name="Status" Type="varchar" MaxLength="15" />
+          <Property Name="ConfirmStatus" Type="bit" Nullable="false" />
+          <Property Name="NewConfirmStatus" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ConfirmConcierge" Type="varchar" MaxLength="100" />
+          <Property Name="ConciergeInitial" Type="varchar" MaxLength="50" />
+          <Property Name="Removed" Type="bit" Nullable="false" />
+          <Property Name="ShowItinerary" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="1000" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+          <Property Name="ConfirmDate" Type="datetime" />
+          <Property Name="AdditionalInfo" Type="nvarchar" MaxLength="500" />
+          <Property Name="CurrencyName" Type="varchar" MaxLength="50" />
+          <Property Name="Price" Type="money" />
+          <Property Name="USDPrice" Type="money" />
+          <Property Name="RevenuePP" Type="bit" />
+          <Property Name="ActionTaken" Type="bit" Nullable="false" />
+          <Property Name="IsNotificationSent" Type="bit" />
+          <Property Name="RequestSessionID" Type="uniqueidentifier" />
+          <Property Name="LangId" Type="varchar" MaxLength="10" />
+          <Property Name="SMSNotification" Type="bit" Nullable="false" />
+          <Property Name="USDGratuity" Type="money" />
+          <Property Name="SMSNotifyCell" Type="varchar" MaxLength="20" />
+          <Property Name="LastConfirmEmailSentDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="GuestPlanner_Log">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GuestPlannerID" Type="int" Nullable="false" />
+          <Property Name="RequestID" Type="varchar" MaxLength="50" />
+          <Property Name="ConfirmationNum" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LoginConfirmationNum" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Hotel_Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Event" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+          <Property Name="DescID" Type="nvarchar" MaxLength="500" />
+          <Property Name="EventDate" Type="datetime" />
+          <Property Name="EventTime" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="300" />
+          <Property Name="NumberPeople" Type="int" />
+          <Property Name="VendorID" Type="int" />
+          <Property Name="RequestTypeID" Type="int" />
+          <Property Name="Other1" Type="varchar" MaxLength="200" />
+          <Property Name="Other2" Type="varchar" MaxLength="200" />
+          <Property Name="Status" Type="varchar" MaxLength="15" />
+          <Property Name="ConfirmStatus" Type="bit" Nullable="false" />
+          <Property Name="NewConfirmStatus" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ConfirmConcierge" Type="varchar" MaxLength="100" />
+          <Property Name="ConciergeInitial" Type="varchar" MaxLength="50" />
+          <Property Name="Removed" Type="bit" Nullable="false" />
+          <Property Name="ShowItinerary" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="1000" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+          <Property Name="ConfirmDate" Type="datetime" />
+          <Property Name="AdditionalInfo" Type="nvarchar" MaxLength="500" />
+          <Property Name="CurrencyName" Type="varchar" MaxLength="50" />
+          <Property Name="Price" Type="money" />
+          <Property Name="USDPrice" Type="money" />
+          <Property Name="RevenuePP" Type="bit" />
+          <Property Name="RequestSessionID" Type="uniqueidentifier" />
+          <Property Name="LangId" Type="varchar" MaxLength="10" />
+          <Property Name="SMSNotification" Type="bit" />
+          <Property Name="USDGratuity" Type="money" />
+          <Property Name="SMSNotifyCell" Type="varchar" MaxLength="20" />
+          <Property Name="LastConfirmEmailSentDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Hotels">
+          <Key>
+            <PropertyRef Name="Hotel_Code" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Live" Type="bit" Nullable="false" />
+          <Property Name="International" Type="bit" />
+          <Property Name="locked" Type="bit" />
+          <Property Name="ReadyForQA" Type="bit" />
+          <Property Name="Hotel_Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LaunchDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="HotelBrandID" Type="int" />
+          <Property Name="Hotel_Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Hotel_Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Hotel_City" Type="nvarchar" MaxLength="100" />
+          <Property Name="Hotel_Zip" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hotel_State" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hotel_Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hotel_Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hotel_Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="DomainName" Type="nvarchar" MaxLength="100" />
+          <Property Name="HotelConcierge_Email" Type="varchar" MaxLength="100" />
+          <Property Name="Hotel_WebSite" Type="varchar" MaxLength="100" />
+          <Property Name="Hotel_Map" Type="varchar" MaxLength="300" />
+          <Property Name="Hotel_Direction" Type="varchar" MaxLength="100" />
+          <Property Name="RoomView" Type="varchar" MaxLength="100" />
+          <Property Name="GatekeeperEmail" Type="varchar" MaxLength="200" />
+          <Property Name="Hotel5pmEmail" Type="varchar" MaxLength="500" />
+          <Property Name="Hotel5pmEmailGreeting" Type="text" />
+          <Property Name="Hotel5pmTime" Type="float" />
+          <Property Name="Hotel5pmDT" Type="datetime" />
+          <Property Name="Hotel5pmEmail_IsSent" Type="bit" />
+          <Property Name="CutoffTime" Type="nvarchar" MaxLength="10" />
+          <Property Name="ImgFolder" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailSignature" Type="varchar" MaxLength="50" />
+          <Property Name="EmailSignatureManager" Type="varchar" MaxLength="50" />
+          <Property Name="EmailSignatureEmail" Type="varchar" MaxLength="100" />
+          <Property Name="LeftBGColor" Type="varchar" MaxLength="10" />
+          <Property Name="ItineraryGreeting" Type="varchar" MaxLength="200" />
+          <Property Name="ReminderEmailGreeting" Type="text" />
+          <Property Name="NewEmailGreeting" Type="text" />
+          <Property Name="STPEmailGreeting" Type="text" />
+          <Property Name="DTPEmailGreeting" Type="varchar" MaxLength="800" />
+          <Property Name="ITPEmailGreeting" Type="text" />
+          <Property Name="CancelEmailGreeting" Type="text" />
+          <Property Name="Call800" Type="varchar" MaxLength="25" />
+          <Property Name="Interface" Type="varchar" MaxLength="20" />
+          <Property Name="UsingEConcierge" Type="bit" />
+          <Property Name="ConfirmationFrom" Type="varchar" MaxLength="200" />
+          <Property Name="HTMLTemplateName" Type="varchar" MaxLength="50" />
+          <Property Name="HTMLTemplateName_Reminder" Type="varchar" MaxLength="50" />
+          <Property Name="NEConTxtTemplateName" Type="varchar" MaxLength="50" />
+          <Property Name="TxtTemplateName_Reminder" Type="varchar" MaxLength="50" />
+          <Property Name="NEConTxtGreetingNew" Type="text" />
+          <Property Name="NEConTxtGreetingCHG" Type="text" />
+          <Property Name="NEConTxtGreetingCXL" Type="text" />
+          <Property Name="TxtGreetingReminder" Type="text" />
+          <Property Name="SendInternalConfirmationBCC" Type="bit" />
+          <Property Name="SpecialistPhone" Type="varchar" MaxLength="100" />
+          <Property Name="DateSubmitted" Type="datetime" />
+          <Property Name="CendynAdminCompanyID" Type="int" />
+          <Property Name="STA" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReminderDays" Type="int" />
+          <Property Name="CancellationPolicy" Type="varchar" MaxLength="5000" />
+          <Property Name="AdditionalFeeText" Type="varchar" MaxLength="500" />
+          <Property Name="SpecialOfferLink" Type="varchar" MaxLength="100" />
+          <Property Name="Signature_Cancel" Type="varchar" MaxLength="50" />
+          <Property Name="SignatureManager_Cancel" Type="varchar" MaxLength="50" />
+          <Property Name="SignatureEmail_Cancel" Type="varchar" MaxLength="100" />
+          <Property Name="ReservationEmail" Type="varchar" MaxLength="100" />
+          <Property Name="EmailFooterLink" Type="varchar" MaxLength="100" />
+          <Property Name="RqstMsg24hrRule" Type="varchar" MaxLength="500" />
+          <Property Name="HTMLTemplateName_Itinerary" Type="varchar" MaxLength="50" />
+          <Property Name="lockDate" Type="varchar" MaxLength="50" />
+          <Property Name="ProfileNewspaper" Type="bit" Nullable="false" />
+          <Property Name="IsRateTypeString" Type="bit" Nullable="false" />
+          <Property Name="HasMultiCancelPolicy" Type="bit" Nullable="false" />
+          <Property Name="ShowRoomType" Type="bit" Nullable="false" />
+          <Property Name="TerminationDate" Type="varchar" MaxLength="50" />
+          <Property Name="TerminationComments" Type="nvarchar(max)" />
+          <Property Name="seasonal" Type="bit" />
+          <Property Name="LocalCurrencyCode" Type="nvarchar" MaxLength="4" />
+          <Property Name="USD_to_Rate" Type="decimal" Precision="20" Scale="8" />
+          <Property Name="MasterPropertyCode" Type="varchar" MaxLength="50" />
+          <Property Name="GuestProfileDomain" Type="nvarchar" MaxLength="200" />
+          <Property Name="eC2HeaderColor" Type="varchar" MaxLength="50" />
+          <Property Name="eC2FooterColor" Type="varchar" MaxLength="50" />
+          <Property Name="BookNowUrl" Type="nvarchar" MaxLength="200" />
+          <Property Name="BrandCode" Type="varchar" MaxLength="20" />
+          <Property Name="ChainCode" Type="varchar" MaxLength="20" />
+          <Property Name="CendynPropertyId" Type="varchar" MaxLength="10" />
+          <Property Name="CenResServiceUrl" Type="varchar" MaxLength="100" />
+          <Property Name="CenResServiceInterface" Type="varchar" MaxLength="20" />
+          <Property Name="DateFormat" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AutoRequestProcessYN" Type="bit" Nullable="false" />
+          <Property Name="AutoConfirmEmailYN" Type="bit" Nullable="false" />
+          <Property Name="CentralResNumYN" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hotels_Currency">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Hotel_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="USD_to_Rate" Type="decimal" Precision="9" Scale="5" Nullable="false" />
+          <Property Name="SymbolPosition" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="InsertBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Hotels_DateFormat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hotel_Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateFormat" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="InsertBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Hotels_Languages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hotel_Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LanguageID" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="CultureID" Type="varchar" MaxLength="10" />
+          <Property Name="DateFormat" Type="varchar" MaxLength="20" />
+          <Property Name="CurrencyCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="InsertBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HotelSettings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hotel_Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LangId" Type="varchar" MaxLength="10" />
+          <Property Name="languageId" Type="int" />
+          <Property Name="SettingKey" Type="varchar" MaxLength="50" />
+          <Property Name="settingValue" Type="nvarchar(max)" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="HotelSocialMedias">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hotel_Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SocialMediaType" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SocialMediaUrl" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="IconUrl" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="SocialMediaPosition" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="DisplayOrder" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="L_Currency">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Symbol" Type="nvarchar" MaxLength="50" />
+          <Property Name="EncodedSymbol" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="InsertBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="CultureID" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="L_DateFormat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateFormat" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="InsertBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="L_WeekDay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WeekdayNumber" Type="int" Nullable="false" />
+          <Property Name="WeekdayName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="InsertBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'eConcierge_SandyLaneResort_QA.dbo.Languages' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Languages">
+          <Key>
+            <PropertyRef Name="LanguageID" />
+            <PropertyRef Name="Active" />
+          </Key>
+          <Property Name="LanguageID" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="12" />
+          <Property Name="Name" Type="varchar" MaxLength="30" />
+          <Property Name="RTL" Type="bit" />
+          <Property Name="CommonLang" Type="bit" />
+          <Property Name="ISO" Type="varchar" MaxLength="10" />
+          <Property Name="ImgFolder" Type="varchar" MaxLength="10" />
+          <Property Name="ExternalLanguageId" Type="nvarchar" MaxLength="5" />
+          <Property Name="DicLanguageId" Type="varchar" MaxLength="10" />
+          <Property Name="DicLanguageName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlannerEvent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="prePublishID" Type="int" />
+          <Property Name="languageID" Type="int" Nullable="false" />
+          <Property Name="Hotel_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="EventDescID" Type="int" />
+          <Property Name="EventDetailDesc" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="EventCategory" Type="varchar" MaxLength="50" />
+          <Property Name="PriceDesc" Type="nvarchar" MaxLength="200" />
+          <Property Name="PriceDetail" Type="nvarchar" MaxLength="3000" />
+          <Property Name="CurrencyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="money" />
+          <Property Name="DisplayPriceYN" Type="bit" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="SortOrder2" Type="int" />
+          <Property Name="ShowOnYN" Type="bit" Nullable="false" />
+          <Property Name="TimeStart" Type="varchar" MaxLength="10" />
+          <Property Name="TimeEnd" Type="varchar" MaxLength="10" />
+          <Property Name="TimeInterval" Type="smallint" />
+          <Property Name="TimeDisplayType" Type="smallint" />
+          <Property Name="DateStart" Type="smalldatetime" />
+          <Property Name="DateEnd" Type="smalldatetime" />
+          <Property Name="ActiveYN" Type="bit" Nullable="false" />
+          <Property Name="Seasonal" Type="bit" Nullable="false" />
+          <Property Name="reservationYN" Type="bit" Nullable="false" />
+          <Property Name="ContentYN" Type="bit" Nullable="false" />
+          <Property Name="DropDownYN" Type="bit" Nullable="false" />
+          <Property Name="VendorID" Type="int" />
+          <Property Name="RequestTypeID" Type="int" />
+          <Property Name="InsertDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="USDPrice" Type="money" />
+          <Property Name="RevenuePP" Type="bit" />
+          <Property Name="EventGroupId" Type="int" />
+          <Property Name="RoomTypeCodeBooked" Type="varchar" MaxLength="30" />
+          <Property Name="RoomTypeCodeUpgrade" Type="varchar" MaxLength="30" />
+          <Property Name="UpgradeWeekDayWeekEnd" Type="varchar" MaxLength="20" />
+          <Property Name="UpgradePricedBy" Type="varchar" MaxLength="20" />
+          <Property Name="RateTypeBooked" Type="varchar" MaxLength="20" />
+          <Property Name="Groupid" Type="int" />
+        </EntityType>
+        <EntityType Name="RateType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RateTypeCode" Type="varchar" MaxLength="20" />
+          <Property Name="RateTypeCodeDescription" Type="varchar" MaxLength="200" />
+          <Property Name="ActiveYN" Type="bit" />
+          <Property Name="InsertDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="HotelCode" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="RateTypeLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RateTypeCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="ConciergeID" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoomImages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HotelCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoomCode" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="FileName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ImageCaption" Type="nvarchar" MaxLength="200" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="LanguageID" Type="int" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RoomType_Code">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hotel_Code" Type="varchar" MaxLength="50" />
+          <Property Name="RoomCode" Type="varchar" MaxLength="30" />
+          <Property Name="RoomDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="RoomType" Type="nvarchar" MaxLength="500" />
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="50" />
+          <Property Name="InsertDate" Type="datetime" />
+          <Property Name="Updatedate" Type="datetime" />
+          <Property Name="RoomLongDescription" Type="nvarchar" MaxLength="2500" />
+          <Property Name="PriceDesc" Type="varchar" MaxLength="50" />
+          <Property Name="NonRoom" Type="varchar" MaxLength="1" />
+          <Property Name="PerNightCharge" Type="varchar" MaxLength="1" />
+          <Property Name="TotalRoom" Type="smallint" />
+          <Property Name="Threshold" Type="smallint" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="AddOnYN" Type="varchar" MaxLength="1" />
+          <Property Name="ImageYN" Type="varchar" MaxLength="1" />
+          <Property Name="UpgradeType" Type="varchar" MaxLength="50" />
+          <Property Name="PackageCode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SentEmailLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginConfirmationNum" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SentDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="Category" Type="varchar" MaxLength="50" />
+          <Property Name="Subject" Type="varchar" MaxLength="200" />
+          <Property Name="Body" Type="text" />
+          <Property Name="GroupPKG" Type="varchar" MaxLength="50" />
+          <Property Name="Source" Type="varchar" MaxLength="50" />
+          <Property Name="SendStatus" Type="varchar" MaxLength="50" />
+          <Property Name="Hotel_Code" Type="varchar" MaxLength="50" />
+          <Property Name="EmailTo" Type="nvarchar" MaxLength="200" />
+          <Property Name="BccEmails" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="settings">
+          <Key>
+            <PropertyRef Name="idSetting" />
+          </Key>
+          <Property Name="idSetting" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="settingKey" Type="nvarchar" MaxLength="50" />
+          <Property Name="settingValue" Type="nvarchar" MaxLength="250" />
+          <Property Name="comments" Type="nvarchar(max)" />
+          <Property Name="idSettingGroup" Type="int" />
+        </EntityType>
+        <EntityType Name="SSOProduct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SSOProduct" Type="nvarchar" MaxLength="50" />
+          <Property Name="SSOProductURL" Type="nvarchar" MaxLength="100" />
+          <Property Name="SSODisplayName" Type="nvarchar" MaxLength="255" />
+          <Property Name="SSOProductDesc" Type="nvarchar" MaxLength="255" />
+          <Property Name="ActiveStatus" Type="bit" Nullable="false" />
+          <Property Name="insertdate" Type="datetime" />
+          <Property Name="updatedate" Type="datetime" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DicBrand_Chain_ChainCode">
+          <End Role="DicChain" Type="Self.DicChain" Multiplicity="1" />
+          <End Role="DicBrand" Type="Self.DicBrand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DicChain">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DicBrand">
+              <PropertyRef Name="ChainID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ConciergeModelStoreContainer">
+          <EntitySet Name="ConciergeHotelAccessMapping" EntityType="Self.ConciergeHotelAccessMapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConciergeLogin" EntityType="Self.ConciergeLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CurrencyConvert" EntityType="Self.CurrencyConvert" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DicBrand" EntityType="Self.DicBrand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DicChain" EntityType="Self.DicChain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailTemplate" EntityType="Self.EmailTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eUpgradeBrandCssMapping" EntityType="Self.eUpgradeBrandCssMapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eUpgradeRequest" EntityType="Self.eUpgradeRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eUpgradeTransactionCode" EntityType="Self.eUpgradeTransactionCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventCategory" EntityType="Self.EventCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventDesc" EntityType="Self.EventDesc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FGuest" EntityType="Self.FGuest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Guest" EntityType="Self.Guest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GuestPlanner" EntityType="Self.GuestPlanner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GuestPlanner_Log" EntityType="Self.GuestPlanner_Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hotels" EntityType="Self.Hotels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hotels_Currency" EntityType="Self.Hotels_Currency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hotels_DateFormat" EntityType="Self.Hotels_DateFormat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hotels_Languages" EntityType="Self.Hotels_Languages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelSettings" EntityType="Self.HotelSettings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelSocialMedias" EntityType="Self.HotelSocialMedias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="L_Currency" EntityType="Self.L_Currency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="L_DateFormat" EntityType="Self.L_DateFormat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="L_WeekDay" EntityType="Self.L_WeekDay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlannerEvent" EntityType="Self.PlannerEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RateType" EntityType="Self.RateType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RateTypeLog" EntityType="Self.RateTypeLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomImages" EntityType="Self.RoomImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomType_Code" EntityType="Self.RoomType_Code" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SentEmailLog" EntityType="Self.SentEmailLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="settings" EntityType="Self.settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SSOProduct" EntityType="Self.SSOProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eUpgradeInventory" EntityType="Self.eUpgradeInventory" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [eUpgradeInventory].[HotelCode] AS [HotelCode], 
+    [eUpgradeInventory].[RoomCode] AS [RoomCode], 
+    [eUpgradeInventory].[StayDate] AS [StayDate], 
+    [eUpgradeInventory].[TotalBookedRoom] AS [TotalBookedRoom], 
+    [eUpgradeInventory].[InsertDate] AS [InsertDate], 
+    [eUpgradeInventory].[UpdateDate] AS [UpdateDate]
+    FROM [dbo].[eUpgradeInventory] AS [eUpgradeInventory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Languages" EntityType="Self.Languages" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Languages].[LanguageID] AS [LanguageID], 
+    [Languages].[Code] AS [Code], 
+    [Languages].[Name] AS [Name], 
+    [Languages].[RTL] AS [RTL], 
+    [Languages].[CommonLang] AS [CommonLang], 
+    [Languages].[ISO] AS [ISO], 
+    [Languages].[ImgFolder] AS [ImgFolder], 
+    [Languages].[ExternalLanguageId] AS [ExternalLanguageId], 
+    [Languages].[DicLanguageId] AS [DicLanguageId], 
+    [Languages].[DicLanguageName] AS [DicLanguageName], 
+    [Languages].[Active] AS [Active]
+    FROM [dbo].[Languages] AS [Languages]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_DicBrand_Chain_ChainCode" Association="Self.FK_DicBrand_Chain_ChainCode">
+            <End Role="DicChain" EntitySet="DicChain" />
+            <End Role="DicBrand" EntitySet="DicBrand" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ConciergeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EventDesc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentID" Type="Int32" />
+          <Property Name="prePublishID" Type="Int32" />
+          <Property Name="LanguageID" Type="Int32" Nullable="false" />
+          <Property Name="ParentLevelID" Type="Int32" />
+          <Property Name="Hotel_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EventCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EventName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EventDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Yardage" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+          <Property Name="Hours" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DisplayPriceYN" Type="Boolean" />
+          <Property Name="ReservationYN" Type="Boolean" />
+          <Property Name="CancellationTerm" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="ActiveYN" Type="Boolean" />
+          <Property Name="ContentNo" Type="Boolean" Nullable="false" />
+          <Property Name="insertDate" Type="DateTime" Precision="3" />
+          <Property Name="updateDate" Type="DateTime" Precision="3" />
+          <Property Name="RevenuePP" Type="Boolean" />
+          <Property Name="seasonal" Type="Boolean" />
+          <Property Name="EventGroupId" Type="Int32" />
+          <Property Name="OTRestaurantID" Type="Int32" />
+          <Property Name="IsOpenTable" Type="Boolean" Nullable="false" />
+          <Property Name="IsTitle" Type="Boolean" Nullable="false" />
+          <Property Name="Duration" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="HasQuantity" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Guest">
+          <Key>
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CellPhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Hotel">
+          <Key>
+            <PropertyRef Name="Hotel_Code" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Live" Type="Boolean" Nullable="false" />
+          <Property Name="International" Type="Boolean" />
+          <Property Name="locked" Type="Boolean" />
+          <Property Name="ReadyForQA" Type="Boolean" />
+          <Property Name="Hotel_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LaunchDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HotelBrandID" Type="Int32" />
+          <Property Name="Hotel_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Hotel_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Hotel_City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Hotel_Zip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hotel_State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hotel_Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hotel_Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hotel_Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DomainName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HotelConcierge_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Hotel_WebSite" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Hotel_Map" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Hotel_Direction" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RoomView" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GatekeeperEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Hotel5pmEmail" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Hotel5pmEmailGreeting" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Hotel5pmTime" Type="Double" />
+          <Property Name="Hotel5pmDT" Type="DateTime" Precision="3" />
+          <Property Name="Hotel5pmEmail_IsSent" Type="Boolean" />
+          <Property Name="CutoffTime" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ImgFolder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailSignature" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailSignatureManager" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailSignatureEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LeftBGColor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ItineraryGreeting" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ReminderEmailGreeting" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NewEmailGreeting" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="STPEmailGreeting" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DTPEmailGreeting" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Name="ITPEmailGreeting" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CancelEmailGreeting" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Call800" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Interface" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UsingEConcierge" Type="Boolean" />
+          <Property Name="ConfirmationFrom" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="HTMLTemplateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HTMLTemplateName_Reminder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NEConTxtTemplateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TxtTemplateName_Reminder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NEConTxtGreetingNew" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NEConTxtGreetingCHG" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NEConTxtGreetingCXL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TxtGreetingReminder" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SendInternalConfirmationBCC" Type="Boolean" />
+          <Property Name="SpecialistPhone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DateSubmitted" Type="DateTime" Precision="3" />
+          <Property Name="CendynAdminCompanyID" Type="Int32" />
+          <Property Name="STA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReminderDays" Type="Int32" />
+          <Property Name="CancellationPolicy" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="AdditionalFeeText" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SpecialOfferLink" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Signature_Cancel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SignatureManager_Cancel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SignatureEmail_Cancel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ReservationEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmailFooterLink" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RqstMsg24hrRule" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="HTMLTemplateName_Itinerary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lockDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProfileNewspaper" Type="Boolean" Nullable="false" />
+          <Property Name="IsRateTypeString" Type="Boolean" Nullable="false" />
+          <Property Name="HasMultiCancelPolicy" Type="Boolean" Nullable="false" />
+          <Property Name="ShowRoomType" Type="Boolean" Nullable="false" />
+          <Property Name="TerminationDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TerminationComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="seasonal" Type="Boolean" />
+          <Property Name="LocalCurrencyCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="USD_to_Rate" Type="Decimal" Precision="20" Scale="8" />
+          <Property Name="MasterPropertyCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GuestProfileDomain" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="eC2HeaderColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="eC2FooterColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BookNowUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="BrandCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ChainCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CendynPropertyId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CenResServiceUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CenResServiceInterface" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DateFormat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AutoRequestProcessYN" Type="Boolean" Nullable="false" />
+          <Property Name="AutoConfirmEmailYN" Type="Boolean" Nullable="false" />
+          <Property Name="CentralResNumYN" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SentEmailLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginConfirmationNum" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SentDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GroupPKG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Source" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SendStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Hotel_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailTo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="BccEmails" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="setting">
+          <Key>
+            <PropertyRef Name="idSetting" />
+          </Key>
+          <Property Name="idSetting" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="settingKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="settingValue" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idSettingGroup" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="ConciergeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EventDescs" EntityType="Self.EventDesc" />
+          <EntitySet Name="Guests" EntityType="Self.Guest" />
+          <EntitySet Name="Hotels" EntityType="Self.Hotel" />
+          <EntitySet Name="SentEmailLogs" EntityType="Self.SentEmailLog" />
+          <EntitySet Name="settings" EntityType="Self.setting" />
+          <EntitySet Name="PlannerEvents" EntityType="ConciergeModel.PlannerEvent" />
+          <EntitySet Name="ConciergeLogins" EntityType="ConciergeModel.ConciergeLogin" />
+          <EntitySet Name="ConciergeHotelAccessMappings" EntityType="ConciergeModel.ConciergeHotelAccessMapping" />
+          <EntitySet Name="eUpgradeRequests" EntityType="ConciergeModel.eUpgradeRequest" />
+          <EntitySet Name="eUpgradeInventories" EntityType="ConciergeModel.eUpgradeInventory" />
+          <EntitySet Name="GuestPlanners" EntityType="ConciergeModel.GuestPlanner" />
+          <EntitySet Name="GuestPlanner_Log" EntityType="ConciergeModel.GuestPlanner_Log" />
+          <EntitySet Name="DicBrands" EntityType="ConciergeModel.DicBrand" />
+          <EntitySet Name="DicChains" EntityType="ConciergeModel.DicChain" />
+          <AssociationSet Name="FK_DicBrand_Chain_ChainCode" Association="ConciergeModel.FK_DicBrand_Chain_ChainCode">
+            <End Role="DicChain" EntitySet="DicChains" />
+            <End Role="DicBrand" EntitySet="DicBrands" />
+          </AssociationSet>
+          <EntitySet Name="HotelSocialMedias" EntityType="ConciergeModel.HotelSocialMedia" />
+          <EntitySet Name="HotelSettings" EntityType="ConciergeModel.HotelSetting" />
+          <EntitySet Name="RateTypes" EntityType="ConciergeModel.RateType" />
+          <EntitySet Name="RateTypeLogs" EntityType="ConciergeModel.RateTypeLog" />
+          <EntitySet Name="SSOProducts" EntityType="ConciergeModel.SSOProduct" />
+          <EntitySet Name="FGuests" EntityType="ConciergeModel.FGuest" />
+          <EntitySet Name="RoomType_Code" EntityType="ConciergeModel.RoomType_Code" />
+          <EntitySet Name="RoomImages" EntityType="ConciergeModel.RoomImage" />
+          <EntitySet Name="eUpgradeTransactionCodes" EntityType="ConciergeModel.eUpgradeTransactionCode" />
+          <EntitySet Name="eUpgradeBrandCssMappings" EntityType="ConciergeModel.eUpgradeBrandCssMapping" />
+          <EntitySet Name="Languages" EntityType="ConciergeModel.Language" />
+          <EntitySet Name="Hotels_DateFormat" EntityType="ConciergeModel.Hotels_DateFormat" />
+          <EntitySet Name="Hotels_Languages" EntityType="ConciergeModel.Hotels_Languages" />
+          <EntitySet Name="L_DateFormat" EntityType="ConciergeModel.L_DateFormat" />
+          <EntitySet Name="L_WeekDay" EntityType="ConciergeModel.L_WeekDay" />
+          <EntitySet Name="CurrencyConverts" EntityType="ConciergeModel.CurrencyConvert" />
+          <EntitySet Name="L_Currency" EntityType="ConciergeModel.L_Currency" />
+          <EntitySet Name="Hotels_Currency" EntityType="ConciergeModel.Hotels_Currency" />
+          <EntitySet Name="EmailTemplates" EntityType="ConciergeModel.EmailTemplate" />
+        </EntityContainer>
+        <EntityType Name="PlannerEvent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentID" Type="Int32" />
+          <Property Name="prePublishID" Type="Int32" />
+          <Property Name="languageID" Type="Int32" Nullable="false" />
+          <Property Name="Hotel_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EventDescID" Type="Int32" />
+          <Property Name="EventDetailDesc" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EventCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PriceDesc" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PriceDetail" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DisplayPriceYN" Type="Boolean" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="SortOrder2" Type="Int32" />
+          <Property Name="ShowOnYN" Type="Boolean" Nullable="false" />
+          <Property Name="TimeStart" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TimeEnd" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TimeInterval" Type="Int16" />
+          <Property Name="TimeDisplayType" Type="Int16" />
+          <Property Name="DateStart" Type="DateTime" Precision="0" />
+          <Property Name="DateEnd" Type="DateTime" Precision="0" />
+          <Property Name="ActiveYN" Type="Boolean" Nullable="false" />
+          <Property Name="Seasonal" Type="Boolean" Nullable="false" />
+          <Property Name="reservationYN" Type="Boolean" Nullable="false" />
+          <Property Name="ContentYN" Type="Boolean" Nullable="false" />
+          <Property Name="DropDownYN" Type="Boolean" Nullable="false" />
+          <Property Name="VendorID" Type="Int32" />
+          <Property Name="RequestTypeID" Type="Int32" />
+          <Property Name="InsertDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="USDPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RevenuePP" Type="Boolean" />
+          <Property Name="EventGroupId" Type="Int32" />
+          <Property Name="RoomTypeCodeBooked" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="RoomTypeCodeUpgrade" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="UpgradeWeekDayWeekEnd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpgradePricedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RateTypeBooked" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Groupid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ConciergeLogin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConciergeID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="HOTEL_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AccessLevel" Type="Int32" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="ReqstEmailFlg" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConciergeHotelAccessMapping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConciergeID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HotelCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ActiveYN" Type="Boolean" />
+          <Property Name="InsertDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="ReqstEmailFlg" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="eUpgradeRequest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="loginConfirmationNum" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HotelCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BookedRoomType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpgradeRoomType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpgradeCost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="UpgradeStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DecisionPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OXIDateSent" Type="DateTime" Precision="3" />
+          <Property Name="OXIMessageID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OXIDirty" Type="Boolean" />
+          <Property Name="OXITransactioncode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InsertDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="TransactionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpgradeType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PerNightCharge" Type="Boolean" />
+          <Property Name="OXIStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OXIReceiptDate" Type="DateTime" Precision="3" />
+          <Property Name="OXIComment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TotalUpgradeFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="RequestID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PackageCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="eUpgradeInventory">
+          <Key>
+            <PropertyRef Name="HotelCode" />
+            <PropertyRef Name="RoomCode" />
+            <PropertyRef Name="StayDate" />
+          </Key>
+          <Property Name="HotelCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RoomCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StayDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TotalBookedRoom" Type="Int16" />
+          <Property Name="InsertDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="GuestPlanner">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LookupID" Type="Guid" Nullable="false" />
+          <Property Name="RequestID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ConfirmationNum" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LoginConfirmationNum" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Hotel_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Event" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="DescID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EventDate" Type="DateTime" Precision="3" />
+          <Property Name="EventTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="NumberPeople" Type="Int32" />
+          <Property Name="VendorID" Type="Int32" />
+          <Property Name="RequestTypeID" Type="Int32" />
+          <Property Name="Other1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Other2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ConfirmStatus" Type="Boolean" Nullable="false" />
+          <Property Name="NewConfirmStatus" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ConfirmConcierge" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ConciergeInitial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Removed" Type="Boolean" Nullable="false" />
+          <Property Name="ShowItinerary" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ConfirmDate" Type="DateTime" Precision="3" />
+          <Property Name="AdditionalInfo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="USDPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RevenuePP" Type="Boolean" />
+          <Property Name="ActionTaken" Type="Boolean" Nullable="false" />
+          <Property Name="IsNotificationSent" Type="Boolean" />
+          <Property Name="RequestSessionID" Type="Guid" />
+          <Property Name="LangId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SMSNotification" Type="Boolean" Nullable="false" />
+          <Property Name="USDGratuity" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SMSNotifyCell" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LastConfirmEmailSentDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="GuestPlanner_Log">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GuestPlannerID" Type="Int32" Nullable="false" />
+          <Property Name="RequestID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ConfirmationNum" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LoginConfirmationNum" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Hotel_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Event" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="DescID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EventDate" Type="DateTime" Precision="3" />
+          <Property Name="EventTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="NumberPeople" Type="Int32" />
+          <Property Name="VendorID" Type="Int32" />
+          <Property Name="RequestTypeID" Type="Int32" />
+          <Property Name="Other1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Other2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ConfirmStatus" Type="Boolean" Nullable="false" />
+          <Property Name="NewConfirmStatus" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ConfirmConcierge" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ConciergeInitial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Removed" Type="Boolean" Nullable="false" />
+          <Property Name="ShowItinerary" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ConfirmDate" Type="DateTime" Precision="3" />
+          <Property Name="AdditionalInfo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="USDPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RevenuePP" Type="Boolean" />
+          <Property Name="RequestSessionID" Type="Guid" />
+          <Property Name="LangId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SMSNotification" Type="Boolean" />
+          <Property Name="USDGratuity" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SMSNotifyCell" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LastConfirmEmailSentDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="DicBrand">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BrandName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ChainID" Type="Int32" Nullable="false" />
+          <Property Name="SortOrder" Type="Int16" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DicChain" Relationship="ConciergeModel.FK_DicBrand_Chain_ChainCode" FromRole="DicBrand" ToRole="DicChain" />
+        </EntityType>
+        <EntityType Name="DicChain">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChainCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ChainName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DicBrands" Relationship="ConciergeModel.FK_DicBrand_Chain_ChainCode" FromRole="DicChain" ToRole="DicBrand" />
+        </EntityType>
+        <Association Name="FK_DicBrand_Chain_ChainCode">
+          <End Type="ConciergeModel.DicChain" Role="DicChain" Multiplicity="1" />
+          <End Type="ConciergeModel.DicBrand" Role="DicBrand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DicChain">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DicBrand">
+              <PropertyRef Name="ChainID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="HotelSocialMedia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hotel_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SocialMediaType" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SocialMediaUrl" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="IconUrl" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SocialMediaPosition" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HotelSetting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hotel_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LangId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="languageId" Type="Int32" />
+          <Property Name="SettingKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="settingValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Comments" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RateType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RateTypeCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RateTypeCodeDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ActiveYN" Type="Boolean" />
+          <Property Name="InsertDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="HotelCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RateTypeLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RateTypeCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ConciergeID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SSOProduct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SSOProduct1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SSOProductURL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SSODisplayName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SSOProductDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ActiveStatus" Type="Boolean" Nullable="false" />
+          <Property Name="insertdate" Type="DateTime" Precision="3" />
+          <Property Name="updatedate" Type="DateTime" Precision="3" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FGuest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Guid" />
+          <Property Name="LoginConfirmationNum" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ConfirmationNum" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HOTEL_CODE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ArrivalDate" Type="DateTime" Precision="3" />
+          <Property Name="Arrival_Estimated_Time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DepartureDate" Type="DateTime" Precision="3" />
+          <Property Name="GPCC_Num" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Preferences_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailOptOut" Type="Boolean" />
+          <Property Name="Adults_Num" Type="Int16" />
+          <Property Name="Children_Num" Type="Int16" />
+          <Property Name="RateType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Rate_Plan_Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="QuotedRate" Type="Double" />
+          <Property Name="Package_Flag" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoomType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RoomType_Desc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PKG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CXL" Type="DateTime" Precision="3" />
+          <Property Name="CXLPolicyType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ReservationDate" Type="DateTime" Precision="3" />
+          <Property Name="ItinerarySent" Type="Boolean" Nullable="false" />
+          <Property Name="SevenDaysSent" Type="Boolean" Nullable="false" />
+          <Property Name="SevenDaysSentQA" Type="Boolean" />
+          <Property Name="NeedToResend" Type="Boolean" Nullable="false" />
+          <Property Name="IsConfirmSent" Type="Boolean" Nullable="false" />
+          <Property Name="IsConfirmSentQA" Type="Boolean" Nullable="false" />
+          <Property Name="CancellationSent" Type="Boolean" Nullable="false" />
+          <Property Name="ImportDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NonGuest" Type="Boolean" />
+          <Property Name="DoNotSend_Confirm" Type="Boolean" Nullable="false" />
+          <Property Name="CXLNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="market" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SourceStayID" Type="Guid" />
+          <Property Name="Departure_Estimated_Time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="eMailType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RateSuppressCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="eMailSuppressCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AcknowledgementNum" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DepPolicy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DepReqAmt" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DepReqDate" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DepRecdAmt" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DepForfeited" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ClientStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Source_Of_Business" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Group_Reservation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Rooms_Num" Type="Int16" />
+          <Property Name="ClientType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Source" Type="Int32" Nullable="false" />
+          <Property Name="PreferredLanguage" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ConfirmationNumOld" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LoginConfirmationNumOld" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CRMStayId" Type="Int32" />
+          <Property Name="CRMCustomerId" Type="Int32" />
+          <Property Name="CRMResStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SMSNotification" Type="Boolean" Nullable="false" />
+          <Property Name="RoomNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AverageDailyRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NightsOfStay" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="LTDTotalRev" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="VIPCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MembershipID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpgradeFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CentralResNum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RoomType_Code">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hotel_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoomCode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="RoomDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="RoomType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LanguageId" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InsertDate" Type="DateTime" Precision="3" />
+          <Property Name="Updatedate" Type="DateTime" Precision="3" />
+          <Property Name="RoomLongDescription" Type="String" MaxLength="2500" FixedLength="false" Unicode="true" />
+          <Property Name="PriceDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PerNightCharge" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="TotalRoom" Type="Int16" />
+          <Property Name="Threshold" Type="Int16" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="AddOnYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ImageYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="UpgradeType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PackageCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RoomImage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HotelCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoomCode" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImageCaption" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LanguageID" Type="Int32" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="InsertDate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="eUpgradeTransactionCode">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CendynPropertyID" Type="Int32" />
+          <Property Name="HotelCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpgradeType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PerNightCharge" Type="Boolean" Nullable="false" />
+          <Property Name="TransactionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ActiveYN" Type="Boolean" Nullable="false" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpgradeTypeDisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PackageCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="eUpgradeBrandCssMapping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BrandCss" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="HotelCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDefault" Type="Boolean" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="InsertBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+<EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="LanguageID" />
+            <PropertyRef Name="Active" />
+          </Key>
+          <Property Name="LanguageID" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="RTL" Type="Boolean" />
+          <Property Name="CommonLang" Type="Boolean" />
+          <Property Name="ISO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ImgFolder" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ExternalLanguageId" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="DicLanguageId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DicLanguageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hotels_DateFormat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hotel_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateFormat" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InsertBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Hotels_Languages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hotel_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LanguageID" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="CultureID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DateFormat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CurrencyCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InsertBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="L_DateFormat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateFormat" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InsertBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="L_WeekDay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WeekdayNumber" Type="Int32" Nullable="false" />
+          <Property Name="WeekdayName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InsertBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CurrencyConvert">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Symbol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="USD_to_Rate" Type="Decimal" Nullable="false" Precision="9" Scale="5" />
+          <Property Name="CurrencyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EncodedSymbol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hotel_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="L_Currency">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Symbol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EncodedSymbol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InsertBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CultureID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Hotels_Currency">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hotel_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="USD_to_Rate" Type="Decimal" Nullable="false" Precision="9" Scale="5" />
+          <Property Name="SymbolPosition" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InsertBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EmailTemplate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hotel_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="languageID" Type="Int32" Nullable="false" />
+          <Property Name="ShowWeatherYN" Type="Boolean" Nullable="false" />
+          <Property Name="ShowRequestYN" Type="Boolean" Nullable="false" />
+          <Property Name="ConciergeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HasMultiCancelPolicy" Type="Boolean" Nullable="false" />
+          <Property Name="TemplateCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Template" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="eMailType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HtmlYN" Type="Boolean" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ActiveYN" Type="Boolean" Nullable="false" />
+          <Property Name="insertDate" Type="DateTime" Precision="3" />
+          <Property Name="updateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ConciergeModelStoreContainer" CdmEntityContainer="ConciergeEntities">
+          <EntitySetMapping Name="EventDescs">
+            <EntityTypeMapping TypeName="ConciergeModel.EventDesc">
+              <MappingFragment StoreEntitySet="EventDesc">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="prePublishID" ColumnName="prePublishID" />
+                <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+                <ScalarProperty Name="ParentLevelID" ColumnName="ParentLevelID" />
+                <ScalarProperty Name="Hotel_Code" ColumnName="Hotel_Code" />
+                <ScalarProperty Name="EventCategory" ColumnName="EventCategory" />
+                <ScalarProperty Name="EventName" ColumnName="EventName" />
+                <ScalarProperty Name="EventDescription" ColumnName="EventDescription" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Yardage" ColumnName="Yardage" />
+                <ScalarProperty Name="Hours" ColumnName="Hours" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DisplayPriceYN" ColumnName="DisplayPriceYN" />
+                <ScalarProperty Name="ReservationYN" ColumnName="ReservationYN" />
+                <ScalarProperty Name="CancellationTerm" ColumnName="CancellationTerm" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="ActiveYN" ColumnName="ActiveYN" />
+                <ScalarProperty Name="ContentNo" ColumnName="ContentNo" />
+                <ScalarProperty Name="insertDate" ColumnName="insertDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="RevenuePP" ColumnName="RevenuePP" />
+                <ScalarProperty Name="seasonal" ColumnName="seasonal" />
+                <ScalarProperty Name="EventGroupId" ColumnName="EventGroupId" />
+                <ScalarProperty Name="OTRestaurantID" ColumnName="OTRestaurantID" />
+                <ScalarProperty Name="IsOpenTable" ColumnName="IsOpenTable" />
+                <ScalarProperty Name="IsTitle" ColumnName="IsTitle" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="HasQuantity" ColumnName="HasQuantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Guests">
+            <EntityTypeMapping TypeName="ConciergeModel.Guest">
+              <MappingFragment StoreEntitySet="Guest">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CellPhoneNumber" ColumnName="CellPhoneNumber" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hotels">
+            <EntityTypeMapping TypeName="ConciergeModel.Hotel">
+              <MappingFragment StoreEntitySet="Hotels">
+                <ScalarProperty Name="CentralResNumYN" ColumnName="CentralResNumYN" />
+                <ScalarProperty Name="AutoConfirmEmailYN" ColumnName="AutoConfirmEmailYN" />
+                <ScalarProperty Name="AutoRequestProcessYN" ColumnName="AutoRequestProcessYN" />
+                <ScalarProperty Name="DateFormat" ColumnName="DateFormat" />
+                <ScalarProperty Name="CenResServiceInterface" ColumnName="CenResServiceInterface" />
+                <ScalarProperty Name="CenResServiceUrl" ColumnName="CenResServiceUrl" />
+                <ScalarProperty Name="CendynPropertyId" ColumnName="CendynPropertyId" />
+                <ScalarProperty Name="ChainCode" ColumnName="ChainCode" />
+                <ScalarProperty Name="BrandCode" ColumnName="BrandCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Live" ColumnName="Live" />
+                <ScalarProperty Name="International" ColumnName="International" />
+                <ScalarProperty Name="locked" ColumnName="locked" />
+                <ScalarProperty Name="ReadyForQA" ColumnName="ReadyForQA" />
+                <ScalarProperty Name="Hotel_Code" ColumnName="Hotel_Code" />
+                <ScalarProperty Name="LaunchDate" ColumnName="LaunchDate" />
+                <ScalarProperty Name="HotelBrandID" ColumnName="HotelBrandID" />
+                <ScalarProperty Name="Hotel_Name" ColumnName="Hotel_Name" />
+                <ScalarProperty Name="Hotel_Address" ColumnName="Hotel_Address" />
+                <ScalarProperty Name="Hotel_City" ColumnName="Hotel_City" />
+                <ScalarProperty Name="Hotel_Zip" ColumnName="Hotel_Zip" />
+                <ScalarProperty Name="Hotel_State" ColumnName="Hotel_State" />
+                <ScalarProperty Name="Hotel_Country" ColumnName="Hotel_Country" />
+                <ScalarProperty Name="Hotel_Phone" ColumnName="Hotel_Phone" />
+                <ScalarProperty Name="Hotel_Fax" ColumnName="Hotel_Fax" />
+                <ScalarProperty Name="DomainName" ColumnName="DomainName" />
+                <ScalarProperty Name="HotelConcierge_Email" ColumnName="HotelConcierge_Email" />
+                <ScalarProperty Name="Hotel_WebSite" ColumnName="Hotel_WebSite" />
+                <ScalarProperty Name="Hotel_Map" ColumnName="Hotel_Map" />
+                <ScalarProperty Name="Hotel_Direction" ColumnName="Hotel_Direction" />
+                <ScalarProperty Name="RoomView" ColumnName="RoomView" />
+                <ScalarProperty Name="GatekeeperEmail" ColumnName="GatekeeperEmail" />
+                <ScalarProperty Name="Hotel5pmEmail" ColumnName="Hotel5pmEmail" />
+                <ScalarProperty Name="Hotel5pmEmailGreeting" ColumnName="Hotel5pmEmailGreeting" />
+                <ScalarProperty Name="Hotel5pmTime" ColumnName="Hotel5pmTime" />
+                <ScalarProperty Name="Hotel5pmDT" ColumnName="Hotel5pmDT" />
+                <ScalarProperty Name="Hotel5pmEmail_IsSent" ColumnName="Hotel5pmEmail_IsSent" />
+                <ScalarProperty Name="CutoffTime" ColumnName="CutoffTime" />
+                <ScalarProperty Name="ImgFolder" ColumnName="ImgFolder" />
+                <ScalarProperty Name="EmailSignature" ColumnName="EmailSignature" />
+                <ScalarProperty Name="EmailSignatureManager" ColumnName="EmailSignatureManager" />
+                <ScalarProperty Name="EmailSignatureEmail" ColumnName="EmailSignatureEmail" />
+                <ScalarProperty Name="LeftBGColor" ColumnName="LeftBGColor" />
+                <ScalarProperty Name="ItineraryGreeting" ColumnName="ItineraryGreeting" />
+                <ScalarProperty Name="ReminderEmailGreeting" ColumnName="ReminderEmailGreeting" />
+                <ScalarProperty Name="NewEmailGreeting" ColumnName="NewEmailGreeting" />
+                <ScalarProperty Name="STPEmailGreeting" ColumnName="STPEmailGreeting" />
+                <ScalarProperty Name="DTPEmailGreeting" ColumnName="DTPEmailGreeting" />
+                <ScalarProperty Name="ITPEmailGreeting" ColumnName="ITPEmailGreeting" />
+                <ScalarProperty Name="CancelEmailGreeting" ColumnName="CancelEmailGreeting" />
+                <ScalarProperty Name="Call800" ColumnName="Call800" />
+                <ScalarProperty Name="Interface" ColumnName="Interface" />
+                <ScalarProperty Name="UsingEConcierge" ColumnName="UsingEConcierge" />
+                <ScalarProperty Name="ConfirmationFrom" ColumnName="ConfirmationFrom" />
+                <ScalarProperty Name="HTMLTemplateName" ColumnName="HTMLTemplateName" />
+                <ScalarProperty Name="HTMLTemplateName_Reminder" ColumnName="HTMLTemplateName_Reminder" />
+                <ScalarProperty Name="NEConTxtTemplateName" ColumnName="NEConTxtTemplateName" />
+                <ScalarProperty Name="TxtTemplateName_Reminder" ColumnName="TxtTemplateName_Reminder" />
+                <ScalarProperty Name="NEConTxtGreetingNew" ColumnName="NEConTxtGreetingNew" />
+                <ScalarProperty Name="NEConTxtGreetingCHG" ColumnName="NEConTxtGreetingCHG" />
+                <ScalarProperty Name="NEConTxtGreetingCXL" ColumnName="NEConTxtGreetingCXL" />
+                <ScalarProperty Name="TxtGreetingReminder" ColumnName="TxtGreetingReminder" />
+                <ScalarProperty Name="SendInternalConfirmationBCC" ColumnName="SendInternalConfirmationBCC" />
+                <ScalarProperty Name="SpecialistPhone" ColumnName="SpecialistPhone" />
+                <ScalarProperty Name="DateSubmitted" ColumnName="DateSubmitted" />
+                <ScalarProperty Name="CendynAdminCompanyID" ColumnName="CendynAdminCompanyID" />
+                <ScalarProperty Name="STA" ColumnName="STA" />
+                <ScalarProperty Name="ReminderDays" ColumnName="ReminderDays" />
+                <ScalarProperty Name="CancellationPolicy" ColumnName="CancellationPolicy" />
+                <ScalarProperty Name="AdditionalFeeText" ColumnName="AdditionalFeeText" />
+                <ScalarProperty Name="SpecialOfferLink" ColumnName="SpecialOfferLink" />
+                <ScalarProperty Name="Signature_Cancel" ColumnName="Signature_Cancel" />
+                <ScalarProperty Name="SignatureManager_Cancel" ColumnName="SignatureManager_Cancel" />
+                <ScalarProperty Name="SignatureEmail_Cancel" ColumnName="SignatureEmail_Cancel" />
+                <ScalarProperty Name="ReservationEmail" ColumnName="ReservationEmail" />
+                <ScalarProperty Name="EmailFooterLink" ColumnName="EmailFooterLink" />
+                <ScalarProperty Name="RqstMsg24hrRule" ColumnName="RqstMsg24hrRule" />
+                <ScalarProperty Name="HTMLTemplateName_Itinerary" ColumnName="HTMLTemplateName_Itinerary" />
+                <ScalarProperty Name="lockDate" ColumnName="lockDate" />
+                <ScalarProperty Name="ProfileNewspaper" ColumnName="ProfileNewspaper" />
+                <ScalarProperty Name="IsRateTypeString" ColumnName="IsRateTypeString" />
+                <ScalarProperty Name="HasMultiCancelPolicy" ColumnName="HasMultiCancelPolicy" />
+                <ScalarProperty Name="ShowRoomType" ColumnName="ShowRoomType" />
+                <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
+                <ScalarProperty Name="TerminationComments" ColumnName="TerminationComments" />
+                <ScalarProperty Name="seasonal" ColumnName="seasonal" />
+                <ScalarProperty Name="LocalCurrencyCode" ColumnName="LocalCurrencyCode" />
+                <ScalarProperty Name="USD_to_Rate" ColumnName="USD_to_Rate" />
+                <ScalarProperty Name="MasterPropertyCode" ColumnName="MasterPropertyCode" />
+                <ScalarProperty Name="GuestProfileDomain" ColumnName="GuestProfileDomain" />
+                <ScalarProperty Name="eC2HeaderColor" ColumnName="eC2HeaderColor" />
+                <ScalarProperty Name="eC2FooterColor" ColumnName="eC2FooterColor" />
+                <ScalarProperty Name="BookNowUrl" ColumnName="BookNowUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SentEmailLogs">
+            <EntityTypeMapping TypeName="ConciergeModel.SentEmailLog">
+              <MappingFragment StoreEntitySet="SentEmailLog">
+                <ScalarProperty Name="BccEmails" ColumnName="BccEmails" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LoginConfirmationNum" ColumnName="LoginConfirmationNum" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="GroupPKG" ColumnName="GroupPKG" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="SendStatus" ColumnName="SendStatus" />
+                <ScalarProperty Name="Hotel_Code" ColumnName="Hotel_Code" />
+                <ScalarProperty Name="EmailTo" ColumnName="EmailTo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="settings">
+            <EntityTypeMapping TypeName="ConciergeModel.setting">
+              <MappingFragment StoreEntitySet="settings">
+                <ScalarProperty Name="idSetting" ColumnName="idSetting" />
+                <ScalarProperty Name="settingKey" ColumnName="settingKey" />
+                <ScalarProperty Name="settingValue" ColumnName="settingValue" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="idSettingGroup" ColumnName="idSettingGroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlannerEvents">
+            <EntityTypeMapping TypeName="ConciergeModel.PlannerEvent">
+              <MappingFragment StoreEntitySet="PlannerEvent">
+                <ScalarProperty Name="Groupid" ColumnName="Groupid" />
+                <ScalarProperty Name="RateTypeBooked" ColumnName="RateTypeBooked" />
+                <ScalarProperty Name="UpgradePricedBy" ColumnName="UpgradePricedBy" />
+                <ScalarProperty Name="UpgradeWeekDayWeekEnd" ColumnName="UpgradeWeekDayWeekEnd" />
+                <ScalarProperty Name="RoomTypeCodeUpgrade" ColumnName="RoomTypeCodeUpgrade" />
+                <ScalarProperty Name="RoomTypeCodeBooked" ColumnName="RoomTypeCodeBooked" />
+                <ScalarProperty Name="EventGroupId" ColumnName="EventGroupId" />
+                <ScalarProperty Name="RevenuePP" ColumnName="RevenuePP" />
+                <ScalarProperty Name="USDPrice" ColumnName="USDPrice" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="RequestTypeID" ColumnName="RequestTypeID" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="DropDownYN" ColumnName="DropDownYN" />
+                <ScalarProperty Name="ContentYN" ColumnName="ContentYN" />
+                <ScalarProperty Name="reservationYN" ColumnName="reservationYN" />
+                <ScalarProperty Name="Seasonal" ColumnName="Seasonal" />
+                <ScalarProperty Name="ActiveYN" ColumnName="ActiveYN" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="TimeDisplayType" ColumnName="TimeDisplayType" />
+                <ScalarProperty Name="TimeInterval" ColumnName="TimeInterval" />
+                <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
+                <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
+                <ScalarProperty Name="ShowOnYN" ColumnName="ShowOnYN" />
+                <ScalarProperty Name="SortOrder2" ColumnName="SortOrder2" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="DisplayPriceYN" ColumnName="DisplayPriceYN" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="PriceDetail" ColumnName="PriceDetail" />
+                <ScalarProperty Name="PriceDesc" ColumnName="PriceDesc" />
+                <ScalarProperty Name="EventCategory" ColumnName="EventCategory" />
+                <ScalarProperty Name="EventDetailDesc" ColumnName="EventDetailDesc" />
+                <ScalarProperty Name="EventDescID" ColumnName="EventDescID" />
+                <ScalarProperty Name="Hotel_Code" ColumnName="Hotel_Code" />
+                <ScalarProperty Name="languageID" ColumnName="languageID" />
+                <ScalarProperty Name="prePublishID" ColumnName="prePublishID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConciergeLogins">
+            <EntityTypeMapping TypeName="ConciergeModel.ConciergeLogin">
+              <MappingFragment StoreEntitySet="ConciergeLogin">
+                <ScalarProperty Name="ReqstEmailFlg" ColumnName="ReqstEmailFlg" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="AccessLevel" ColumnName="AccessLevel" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="password1" ColumnName="password1" />
+                <ScalarProperty Name="HOTEL_CODE" ColumnName="HOTEL_CODE" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="ConciergeID" ColumnName="ConciergeID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConciergeHotelAccessMappings">
+            <EntityTypeMapping TypeName="ConciergeModel.ConciergeHotelAccessMapping">
+              <MappingFragment StoreEntitySet="ConciergeHotelAccessMapping">
+                <ScalarProperty Name="ReqstEmailFlg" ColumnName="ReqstEmailFlg" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="ActiveYN" ColumnName="ActiveYN" />
+                <ScalarProperty Name="HotelCode" ColumnName="HotelCode" />
+                <ScalarProperty Name="ConciergeID" ColumnName="ConciergeID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eUpgradeRequests">
+            <EntityTypeMapping TypeName="ConciergeModel.eUpgradeRequest">
+              <MappingFragment StoreEntitySet="eUpgradeRequest">
+                <ScalarProperty Name="TotalUpgradeFees" ColumnName="TotalUpgradeFees" />
+                <ScalarProperty Name="OXIComment" ColumnName="OXIComment" />
+                <ScalarProperty Name="OXIReceiptDate" ColumnName="OXIReceiptDate" />
+                <ScalarProperty Name="OXIStatus" ColumnName="OXIStatus" />
+                <ScalarProperty Name="PerNightCharge" ColumnName="PerNightCharge" />
+                <ScalarProperty Name="UpgradeType" ColumnName="UpgradeType" />
+                <ScalarProperty Name="TransactionCode" ColumnName="TransactionCode" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="OXITransactioncode" ColumnName="OXITransactioncode" />
+                <ScalarProperty Name="OXIDirty" ColumnName="OXIDirty" />
+                <ScalarProperty Name="OXIMessageID" ColumnName="OXIMessageID" />
+                <ScalarProperty Name="OXIDateSent" ColumnName="OXIDateSent" />
+                <ScalarProperty Name="DecisionPerson" ColumnName="DecisionPerson" />
+                <ScalarProperty Name="UpgradeStatus" ColumnName="UpgradeStatus" />
+                <ScalarProperty Name="UpgradeCost" ColumnName="UpgradeCost" />
+                <ScalarProperty Name="UpgradeRoomType" ColumnName="UpgradeRoomType" />
+                <ScalarProperty Name="BookedRoomType" ColumnName="BookedRoomType" />
+                <ScalarProperty Name="HotelCode" ColumnName="HotelCode" />
+                <ScalarProperty Name="loginConfirmationNum" ColumnName="loginConfirmationNum" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+                <ScalarProperty Name="PackageCode" ColumnName="PackageCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eUpgradeInventories">
+            <EntityTypeMapping TypeName="ConciergeModel.eUpgradeInventory">
+              <MappingFragment StoreEntitySet="eUpgradeInventory">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="TotalBookedRoom" ColumnName="TotalBookedRoom" />
+                <ScalarProperty Name="StayDate" ColumnName="StayDate" />
+                <ScalarProperty Name="RoomCode" ColumnName="RoomCode" />
+                <ScalarProperty Name="HotelCode" ColumnName="HotelCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GuestPlanners">
+            <EntityTypeMapping TypeName="ConciergeModel.GuestPlanner">
+              <MappingFragment StoreEntitySet="GuestPlanner">
+                <ScalarProperty Name="LastConfirmEmailSentDate" ColumnName="LastConfirmEmailSentDate" />
+                <ScalarProperty Name="SMSNotifyCell" ColumnName="SMSNotifyCell" />
+                <ScalarProperty Name="USDGratuity" ColumnName="USDGratuity" />
+                <ScalarProperty Name="SMSNotification" ColumnName="SMSNotification" />
+                <ScalarProperty Name="LangId" ColumnName="LangId" />
+                <ScalarProperty Name="RequestSessionID" ColumnName="RequestSessionID" />
+                <ScalarProperty Name="IsNotificationSent" ColumnName="IsNotificationSent" />
+                <ScalarProperty Name="ActionTaken" ColumnName="ActionTaken" />
+                <ScalarProperty Name="RevenuePP" ColumnName="RevenuePP" />
+                <ScalarProperty Name="USDPrice" ColumnName="USDPrice" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="AdditionalInfo" ColumnName="AdditionalInfo" />
+                <ScalarProperty Name="ConfirmDate" ColumnName="ConfirmDate" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="ShowItinerary" ColumnName="ShowItinerary" />
+                <ScalarProperty Name="Removed" ColumnName="Removed" />
+                <ScalarProperty Name="ConciergeInitial" ColumnName="ConciergeInitial" />
+                <ScalarProperty Name="ConfirmConcierge" ColumnName="ConfirmConcierge" />
+                <ScalarProperty Name="NewConfirmStatus" ColumnName="NewConfirmStatus" />
+                <ScalarProperty Name="ConfirmStatus" ColumnName="ConfirmStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Other2" ColumnName="Other2" />
+                <ScalarProperty Name="Other1" ColumnName="Other1" />
+                <ScalarProperty Name="RequestTypeID" ColumnName="RequestTypeID" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="NumberPeople" ColumnName="NumberPeople" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EventTime" ColumnName="EventTime" />
+                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="DescID" ColumnName="DescID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Event" ColumnName="Event" />
+                <ScalarProperty Name="Hotel_Code" ColumnName="Hotel_Code" />
+                <ScalarProperty Name="LoginConfirmationNum" ColumnName="LoginConfirmationNum" />
+                <ScalarProperty Name="ConfirmationNum" ColumnName="ConfirmationNum" />
+                <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+                <ScalarProperty Name="LookupID" ColumnName="LookupID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GuestPlanner_Log">
+            <EntityTypeMapping TypeName="ConciergeModel.GuestPlanner_Log">
+              <MappingFragment StoreEntitySet="GuestPlanner_Log">
+                <ScalarProperty Name="LastConfirmEmailSentDate" ColumnName="LastConfirmEmailSentDate" />
+                <ScalarProperty Name="SMSNotifyCell" ColumnName="SMSNotifyCell" />
+                <ScalarProperty Name="USDGratuity" ColumnName="USDGratuity" />
+                <ScalarProperty Name="SMSNotification" ColumnName="SMSNotification" />
+                <ScalarProperty Name="LangId" ColumnName="LangId" />
+                <ScalarProperty Name="RequestSessionID" ColumnName="RequestSessionID" />
+                <ScalarProperty Name="RevenuePP" ColumnName="RevenuePP" />
+                <ScalarProperty Name="USDPrice" ColumnName="USDPrice" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="AdditionalInfo" ColumnName="AdditionalInfo" />
+                <ScalarProperty Name="ConfirmDate" ColumnName="ConfirmDate" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="ShowItinerary" ColumnName="ShowItinerary" />
+                <ScalarProperty Name="Removed" ColumnName="Removed" />
+                <ScalarProperty Name="ConciergeInitial" ColumnName="ConciergeInitial" />
+                <ScalarProperty Name="ConfirmConcierge" ColumnName="ConfirmConcierge" />
+                <ScalarProperty Name="NewConfirmStatus" ColumnName="NewConfirmStatus" />
+                <ScalarProperty Name="ConfirmStatus" ColumnName="ConfirmStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Other2" ColumnName="Other2" />
+                <ScalarProperty Name="Other1" ColumnName="Other1" />
+                <ScalarProperty Name="RequestTypeID" ColumnName="RequestTypeID" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="NumberPeople" ColumnName="NumberPeople" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EventTime" ColumnName="EventTime" />
+                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="DescID" ColumnName="DescID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Event" ColumnName="Event" />
+                <ScalarProperty Name="Hotel_Code" ColumnName="Hotel_Code" />
+                <ScalarProperty Name="LoginConfirmationNum" ColumnName="LoginConfirmationNum" />
+                <ScalarProperty Name="ConfirmationNum" ColumnName="ConfirmationNum" />
+                <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+                <ScalarProperty Name="GuestPlannerID" ColumnName="GuestPlannerID" />
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DicBrands">
+            <EntityTypeMapping TypeName="ConciergeModel.DicBrand">
+              <MappingFragment StoreEntitySet="DicBrand">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="ChainID" ColumnName="ChainID" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="BrandCode" ColumnName="BrandCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DicChains">
+            <EntityTypeMapping TypeName="ConciergeModel.DicChain">
+              <MappingFragment StoreEntitySet="DicChain">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ChainName" ColumnName="ChainName" />
+                <ScalarProperty Name="ChainCode" ColumnName="ChainCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelSocialMedias">
+            <EntityTypeMapping TypeName="ConciergeModel.HotelSocialMedia">
+              <MappingFragment StoreEntitySet="HotelSocialMedias">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="SocialMediaPosition" ColumnName="SocialMediaPosition" />
+                <ScalarProperty Name="IconUrl" ColumnName="IconUrl" />
+                <ScalarProperty Name="SocialMediaUrl" ColumnName="SocialMediaUrl" />
+                <ScalarProperty Name="SocialMediaType" ColumnName="SocialMediaType" />
+                <ScalarProperty Name="Hotel_Code" ColumnName="Hotel_Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelSettings">
+            <EntityTypeMapping TypeName="ConciergeModel.HotelSetting">
+              <MappingFragment StoreEntitySet="HotelSettings">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="settingValue" ColumnName="settingValue" />
+                <ScalarProperty Name="SettingKey" ColumnName="SettingKey" />
+                <ScalarProperty Name="languageId" ColumnName="languageId" />
+                <ScalarProperty Name="LangId" ColumnName="LangId" />
+                <ScalarProperty Name="Hotel_Code" ColumnName="Hotel_Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RateTypes">
+            <EntityTypeMapping TypeName="ConciergeModel.RateType">
+              <MappingFragment StoreEntitySet="RateType">
+                <ScalarProperty Name="HotelCode" ColumnName="HotelCode" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="ActiveYN" ColumnName="ActiveYN" />
+                <ScalarProperty Name="RateTypeCodeDescription" ColumnName="RateTypeCodeDescription" />
+                <ScalarProperty Name="RateTypeCode" ColumnName="RateTypeCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RateTypeLogs">
+            <EntityTypeMapping TypeName="ConciergeModel.RateTypeLog">
+              <MappingFragment StoreEntitySet="RateTypeLog">
+                <ScalarProperty Name="ConciergeID" ColumnName="ConciergeID" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="RateTypeCode" ColumnName="RateTypeCode" />
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SSOProducts">
+            <EntityTypeMapping TypeName="ConciergeModel.SSOProduct">
+              <MappingFragment StoreEntitySet="SSOProduct">
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="updatedate" ColumnName="updatedate" />
+                <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+                <ScalarProperty Name="ActiveStatus" ColumnName="ActiveStatus" />
+                <ScalarProperty Name="SSOProductDesc" ColumnName="SSOProductDesc" />
+                <ScalarProperty Name="SSODisplayName" ColumnName="SSODisplayName" />
+                <ScalarProperty Name="SSOProductURL" ColumnName="SSOProductURL" />
+                <ScalarProperty Name="SSOProduct1" ColumnName="SSOProduct" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FGuests">
+            <EntityTypeMapping TypeName="ConciergeModel.FGuest">
+              <MappingFragment StoreEntitySet="FGuest">
+                <ScalarProperty Name="CentralResNum" ColumnName="CentralResNum" />
+                <ScalarProperty Name="UpgradeFees" ColumnName="UpgradeFees" />
+                <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
+                <ScalarProperty Name="VIPCode" ColumnName="VIPCode" />
+                <ScalarProperty Name="LTDTotalRev" ColumnName="LTDTotalRev" />
+                <ScalarProperty Name="NightsOfStay" ColumnName="NightsOfStay" />
+                <ScalarProperty Name="AverageDailyRate" ColumnName="AverageDailyRate" />
+                <ScalarProperty Name="RoomNumber" ColumnName="RoomNumber" />
+                <ScalarProperty Name="SMSNotification" ColumnName="SMSNotification" />
+                <ScalarProperty Name="CRMResStatus" ColumnName="CRMResStatus" />
+                <ScalarProperty Name="CRMCustomerId" ColumnName="CRMCustomerId" />
+                <ScalarProperty Name="CRMStayId" ColumnName="CRMStayId" />
+                <ScalarProperty Name="LoginConfirmationNumOld" ColumnName="LoginConfirmationNumOld" />
+                <ScalarProperty Name="ConfirmationNumOld" ColumnName="ConfirmationNumOld" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="PreferredLanguage" ColumnName="PreferredLanguage" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="ClientType" ColumnName="ClientType" />
+                <ScalarProperty Name="Rooms_Num" ColumnName="Rooms_Num" />
+                <ScalarProperty Name="Group_Reservation" ColumnName="Group_Reservation" />
+                <ScalarProperty Name="Source_Of_Business" ColumnName="Source_Of_Business" />
+                <ScalarProperty Name="ClientStatus" ColumnName="ClientStatus" />
+                <ScalarProperty Name="DepForfeited" ColumnName="DepForfeited" />
+                <ScalarProperty Name="DepRecdAmt" ColumnName="DepRecdAmt" />
+                <ScalarProperty Name="DepReqDate" ColumnName="DepReqDate" />
+                <ScalarProperty Name="DepReqAmt" ColumnName="DepReqAmt" />
+                <ScalarProperty Name="DepPolicy" ColumnName="DepPolicy" />
+                <ScalarProperty Name="AcknowledgementNum" ColumnName="AcknowledgementNum" />
+                <ScalarProperty Name="eMailSuppressCode" ColumnName="eMailSuppressCode" />
+                <ScalarProperty Name="RateSuppressCode" ColumnName="RateSuppressCode" />
+                <ScalarProperty Name="eMailType" ColumnName="eMailType" />
+                <ScalarProperty Name="Departure_Estimated_Time" ColumnName="Departure_Estimated_Time" />
+                <ScalarProperty Name="SourceStayID" ColumnName="SourceStayID" />
+                <ScalarProperty Name="market" ColumnName="market" />
+                <ScalarProperty Name="CXLNumber" ColumnName="CXLNumber" />
+                <ScalarProperty Name="DoNotSend_Confirm" ColumnName="DoNotSend_Confirm" />
+                <ScalarProperty Name="NonGuest" ColumnName="NonGuest" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="ImportDate" ColumnName="ImportDate" />
+                <ScalarProperty Name="CancellationSent" ColumnName="CancellationSent" />
+                <ScalarProperty Name="IsConfirmSentQA" ColumnName="IsConfirmSentQA" />
+                <ScalarProperty Name="IsConfirmSent" ColumnName="IsConfirmSent" />
+                <ScalarProperty Name="NeedToResend" ColumnName="NeedToResend" />
+                <ScalarProperty Name="SevenDaysSentQA" ColumnName="SevenDaysSentQA" />
+                <ScalarProperty Name="SevenDaysSent" ColumnName="SevenDaysSent" />
+                <ScalarProperty Name="ItinerarySent" ColumnName="ItinerarySent" />
+                <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
+                <ScalarProperty Name="CXLPolicyType" ColumnName="CXLPolicyType" />
+                <ScalarProperty Name="CXL" ColumnName="CXL" />
+                <ScalarProperty Name="PKG" ColumnName="PKG" />
+                <ScalarProperty Name="RoomType_Desc" ColumnName="RoomType_Desc" />
+                <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Package_Flag" ColumnName="Package_Flag" />
+                <ScalarProperty Name="QuotedRate" ColumnName="QuotedRate" />
+                <ScalarProperty Name="Rate_Plan_Text" ColumnName="Rate_Plan_Text" />
+                <ScalarProperty Name="RateType" ColumnName="RateType" />
+                <ScalarProperty Name="Children_Num" ColumnName="Children_Num" />
+                <ScalarProperty Name="Adults_Num" ColumnName="Adults_Num" />
+                <ScalarProperty Name="EmailOptOut" ColumnName="EmailOptOut" />
+                <ScalarProperty Name="Preferences_Desc" ColumnName="Preferences_Desc" />
+                <ScalarProperty Name="GPCC_Num" ColumnName="GPCC_Num" />
+                <ScalarProperty Name="DepartureDate" ColumnName="DepartureDate" />
+                <ScalarProperty Name="Arrival_Estimated_Time" ColumnName="Arrival_Estimated_Time" />
+                <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="HOTEL_CODE" ColumnName="HOTEL_CODE" />
+                <ScalarProperty Name="ConfirmationNum" ColumnName="ConfirmationNum" />
+                <ScalarProperty Name="LoginConfirmationNum" ColumnName="LoginConfirmationNum" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomType_Code">
+            <EntityTypeMapping TypeName="ConciergeModel.RoomType_Code">
+              <MappingFragment StoreEntitySet="RoomType_Code">
+                <ScalarProperty Name="UpgradeType" ColumnName="UpgradeType" />
+                <ScalarProperty Name="ImageYN" ColumnName="ImageYN" />
+                <ScalarProperty Name="AddOnYN" ColumnName="AddOnYN" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Threshold" ColumnName="Threshold" />
+                <ScalarProperty Name="TotalRoom" ColumnName="TotalRoom" />
+                <ScalarProperty Name="PerNightCharge" ColumnName="PerNightCharge" />
+                <ScalarProperty Name="PriceDesc" ColumnName="PriceDesc" />
+                <ScalarProperty Name="RoomLongDescription" ColumnName="RoomLongDescription" />
+                <ScalarProperty Name="Updatedate" ColumnName="Updatedate" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+                <ScalarProperty Name="RoomDescription" ColumnName="RoomDescription" />
+                <ScalarProperty Name="RoomCode" ColumnName="RoomCode" />
+                <ScalarProperty Name="Hotel_Code" ColumnName="Hotel_Code" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="PackageCode" ColumnName="PackageCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomImages">
+            <EntityTypeMapping TypeName="ConciergeModel.RoomImage">
+              <MappingFragment StoreEntitySet="RoomImages">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="ImageCaption" ColumnName="ImageCaption" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="RoomCode" ColumnName="RoomCode" />
+                <ScalarProperty Name="HotelCode" ColumnName="HotelCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eUpgradeTransactionCodes">
+            <EntityTypeMapping TypeName="ConciergeModel.eUpgradeTransactionCode">
+              <MappingFragment StoreEntitySet="eUpgradeTransactionCode">
+                <ScalarProperty Name="UpgradeTypeDisplayName" ColumnName="UpgradeTypeDisplayName" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="ActiveYN" ColumnName="ActiveYN" />
+                <ScalarProperty Name="TransactionCode" ColumnName="TransactionCode" />
+                <ScalarProperty Name="PerNightCharge" ColumnName="PerNightCharge" />
+                <ScalarProperty Name="UpgradeType" ColumnName="UpgradeType" />
+                <ScalarProperty Name="HotelCode" ColumnName="HotelCode" />
+                <ScalarProperty Name="CendynPropertyID" ColumnName="CendynPropertyID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PackageCode" ColumnName="PackageCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eUpgradeBrandCssMappings">
+            <EntityTypeMapping TypeName="ConciergeModel.eUpgradeBrandCssMapping">
+              <MappingFragment StoreEntitySet="eUpgradeBrandCssMapping">
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="InsertBy" ColumnName="InsertBy" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="HotelCode" ColumnName="HotelCode" />
+                <ScalarProperty Name="BrandCss" ColumnName="BrandCss" />
+                <ScalarProperty Name="BrandCode" ColumnName="BrandCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Languages">
+            <EntityTypeMapping TypeName="ConciergeModel.Language">
+              <MappingFragment StoreEntitySet="Languages">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="DicLanguageName" ColumnName="DicLanguageName" />
+                <ScalarProperty Name="DicLanguageId" ColumnName="DicLanguageId" />
+                <ScalarProperty Name="ExternalLanguageId" ColumnName="ExternalLanguageId" />
+                <ScalarProperty Name="ImgFolder" ColumnName="ImgFolder" />
+                <ScalarProperty Name="ISO" ColumnName="ISO" />
+                <ScalarProperty Name="CommonLang" ColumnName="CommonLang" />
+                <ScalarProperty Name="RTL" ColumnName="RTL" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hotels_DateFormat">
+            <EntityTypeMapping TypeName="ConciergeModel.Hotels_DateFormat">
+              <MappingFragment StoreEntitySet="Hotels_DateFormat">
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertBy" ColumnName="InsertBy" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="DateFormat" ColumnName="DateFormat" />
+                <ScalarProperty Name="Hotel_Code" ColumnName="Hotel_Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hotels_Languages">
+            <EntityTypeMapping TypeName="ConciergeModel.Hotels_Languages">
+              <MappingFragment StoreEntitySet="Hotels_Languages">
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertBy" ColumnName="InsertBy" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="DateFormat" ColumnName="DateFormat" />
+                <ScalarProperty Name="CultureID" ColumnName="CultureID" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+                <ScalarProperty Name="Hotel_Code" ColumnName="Hotel_Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="L_DateFormat">
+            <EntityTypeMapping TypeName="ConciergeModel.L_DateFormat">
+              <MappingFragment StoreEntitySet="L_DateFormat">
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertBy" ColumnName="InsertBy" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="DateFormat" ColumnName="DateFormat" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="L_WeekDay">
+            <EntityTypeMapping TypeName="ConciergeModel.L_WeekDay">
+              <MappingFragment StoreEntitySet="L_WeekDay">
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertBy" ColumnName="InsertBy" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="WeekdayName" ColumnName="WeekdayName" />
+                <ScalarProperty Name="WeekdayNumber" ColumnName="WeekdayNumber" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CurrencyConverts">
+            <EntityTypeMapping TypeName="ConciergeModel.CurrencyConvert">
+              <MappingFragment StoreEntitySet="CurrencyConvert">
+                <ScalarProperty Name="Hotel_Code" ColumnName="Hotel_Code" />
+                <ScalarProperty Name="EncodedSymbol" ColumnName="EncodedSymbol" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="USD_to_Rate" ColumnName="USD_to_Rate" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="L_Currency">
+            <EntityTypeMapping TypeName="ConciergeModel.L_Currency">
+              <MappingFragment StoreEntitySet="L_Currency">
+                <ScalarProperty Name="CultureID" ColumnName="CultureID" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertBy" ColumnName="InsertBy" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="EncodedSymbol" ColumnName="EncodedSymbol" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hotels_Currency">
+            <EntityTypeMapping TypeName="ConciergeModel.Hotels_Currency">
+              <MappingFragment StoreEntitySet="Hotels_Currency">
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertBy" ColumnName="InsertBy" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="SymbolPosition" ColumnName="SymbolPosition" />
+                <ScalarProperty Name="USD_to_Rate" ColumnName="USD_to_Rate" />
+                <ScalarProperty Name="Hotel_Code" ColumnName="Hotel_Code" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailTemplates">
+            <EntityTypeMapping TypeName="ConciergeModel.EmailTemplate">
+              <MappingFragment StoreEntitySet="EmailTemplate">
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="insertDate" ColumnName="insertDate" />
+                <ScalarProperty Name="ActiveYN" ColumnName="ActiveYN" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="HtmlYN" ColumnName="HtmlYN" />
+                <ScalarProperty Name="eMailType" ColumnName="eMailType" />
+                <ScalarProperty Name="Template" ColumnName="Template" />
+                <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+                <ScalarProperty Name="TemplateCode" ColumnName="TemplateCode" />
+                <ScalarProperty Name="HasMultiCancelPolicy" ColumnName="HasMultiCancelPolicy" />
+                <ScalarProperty Name="ConciergeName" ColumnName="ConciergeName" />
+                <ScalarProperty Name="ShowRequestYN" ColumnName="ShowRequestYN" />
+                <ScalarProperty Name="ShowWeatherYN" ColumnName="ShowWeatherYN" />
+                <ScalarProperty Name="languageID" ColumnName="languageID" />
+                <ScalarProperty Name="Hotel_Code" ColumnName="Hotel_Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

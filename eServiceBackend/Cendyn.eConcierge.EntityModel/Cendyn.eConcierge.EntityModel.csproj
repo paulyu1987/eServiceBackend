@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7B6B7D55-E543-45D9-97D7-D552F621A2A8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cendyn.eConcierge.EntityModel</RootNamespace>
+    <AssemblyName>Cendyn.eConcierge.EntityModel</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\QA\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AvailableRoomDTO.cs" />
+    <Compile Include="BusinessRuleSearchCriteriaDTO.cs" />
+    <Compile Include="BusinessRuleSearchResultDTO.cs" />
+    <Compile Include="CenResParamsDTO.cs" />
+    <Compile Include="ConciergeDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConciergeHotelAccessMapping.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConciergeLogin.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CurrencyConvert.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DicBrand.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DicChain.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DomainInformationModel.cs" />
+    <Compile Include="EmailTemplate.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="eUpgradeBrandCssMapping.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="eUpgradeInventory.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="eUpgradeOptionDTO.cs" />
+    <Compile Include="eUpgradeRequest.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EUpgradeRequestDTO.cs" />
+    <Compile Include="eUpgradeTransactionCode.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventDesc.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FGuest.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FGuestDTO.cs" />
+    <Compile Include="GrantedRequestEmailDTO.cs" />
+    <Compile Include="Guest.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GuestPlanner.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GuestPlanner_Log.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Hotel.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HotelCurrencyItem.cs" />
+    <Compile Include="HotelDTO.cs" />
+    <Compile Include="HotelInformationModel.cs" />
+    <Compile Include="HotelLanguageItem.cs" />
+    <Compile Include="HotelSetting.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HotelSettingDTO.cs" />
+    <Compile Include="HotelSocialMedia.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HotelSocialMediaDTO.cs" />
+    <Compile Include="Hotels_Currency.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Hotels_DateFormat.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Hotels_Languages.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ImagesSearchCriteriaDTO.cs" />
+    <Compile Include="ImagesSearchResultDTO.cs" />
+    <Compile Include="ImageUpdateItemDTO.cs" />
+    <Compile Include="Language.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ListItemDTO.cs" />
+    <Compile Include="ListItemInt.cs" />
+    <Compile Include="LoginTokenDTO.cs" />
+    <Compile Include="L_Currency.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="L_DateFormat.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="L_WeekDay.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NewBusinessRuleSaveDTO.cs" />
+    <Compile Include="NewRateTypeSaveDTO.cs" />
+    <Compile Include="NewRoomTypeSaveDTO.cs" />
+    <Compile Include="PagingInformation.cs" />
+    <Compile Include="PlannerEvent.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RateType.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RateTypeLog.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RateTypeSearchCriteriaDTO.cs" />
+    <Compile Include="RateTypeSearchResultDTO.cs" />
+    <Compile Include="ReportSearchCriteriaDTO.cs" />
+    <Compile Include="ReportSearchResultDTO.cs" />
+    <Compile Include="RequestConfirmEmailSendDTO.cs" />
+    <Compile Include="RequestNotificationEmailSendDTO.cs" />
+    <Compile Include="RequestSearchCriteriaDTO.cs" />
+    <Compile Include="RequestSearchResultDTO.cs" />
+    <Compile Include="RoomImage.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoomImageDTO.cs" />
+    <Compile Include="RoomTypeDisplayItem.cs" />
+    <Compile Include="RoomTypeSearchCriteriaDTO.cs" />
+    <Compile Include="RoomTypeSearchResultDTO.cs" />
+    <Compile Include="RoomType_Code.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SendEmailDTO.cs" />
+    <Compile Include="SentEmailLog.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="setting.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SSOProduct.cs">
+      <DependentUpon>ConciergeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserSearchCriteriaDTO.cs" />
+    <Compile Include="UserSearchResultDTO.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ConciergeDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ConciergeDB.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

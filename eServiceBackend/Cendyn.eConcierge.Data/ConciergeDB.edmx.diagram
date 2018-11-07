@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+	<Diagram DiagramId="781f35b170fc4633b336ab6f8e20eda5" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="ConciergeModel.EventDesc" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConciergeModel.Guest" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConciergeModel.Hotel" Width="1.5" PointX="29.625" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConciergeModel.SentEmailLog" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConciergeModel.setting" Width="1.5" PointX="10.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConciergeModel.PlannerEvent" Width="1.5" PointX="2.75" PointY="9.75" />
+        <EntityTypeShape EntityType="ConciergeModel.ConciergeLogin" Width="1.5" PointX="13.375" PointY="5.75" />
+        <EntityTypeShape EntityType="ConciergeModel.ConciergeHotelAccessMapping" Width="1.5" PointX="13.375" PointY="10.75" />
+        <EntityTypeShape EntityType="ConciergeModel.eUpgradeRequest" Width="1.5" PointX="13.375" PointY="13.75" />
+        <EntityTypeShape EntityType="ConciergeModel.eUpgradeInventory" Width="1.5" PointX="15.375" PointY="5.75" />
+        <EntityTypeShape EntityType="ConciergeModel.GuestPlanner" Width="1.5" PointX="15.375" PointY="8.75" />
+        <EntityTypeShape EntityType="ConciergeModel.GuestPlanner_Log" Width="1.5" PointX="23" PointY="1.25" />
+        <EntityTypeShape EntityType="ConciergeModel.DicBrand" Width="1.5" PointX="19.625" PointY="11" />
+        <EntityTypeShape EntityType="ConciergeModel.DicChain" Width="1.5" PointX="17.375" PointY="11.125" />
+        <AssociationConnector Association="ConciergeModel.FK_DicBrand_Chain_ChainCode" />
+        <EntityTypeShape EntityType="ConciergeModel.HotelSocialMedia" Width="1.5" PointX="17.375" PointY="14.75" />
+        <EntityTypeShape EntityType="ConciergeModel.HotelSetting" Width="1.5" PointX="11.375" PointY="18.75" />
+        <EntityTypeShape EntityType="ConciergeModel.RateType" Width="1.5" PointX="13.375" PointY="18.75" />
+        <EntityTypeShape EntityType="ConciergeModel.RateTypeLog" Width="1.5" PointX="15.375" PointY="18.75" />
+        <EntityTypeShape EntityType="ConciergeModel.SSOProduct" Width="1.5" PointX="17.375" PointY="18.75" />
+        <EntityTypeShape EntityType="ConciergeModel.FGuest" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="ConciergeModel.RoomType_Code" Width="3.5" PointX="17.375" PointY="1.125" />
+        <EntityTypeShape EntityType="ConciergeModel.RoomImage" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="ConciergeModel.eUpgradeTransactionCode" Width="1.5" PointX="7.375" PointY="7.75" />
+        <EntityTypeShape EntityType="ConciergeModel.eUpgradeBrandCssMapping" Width="1.5" PointX="13.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ConciergeModel.Language" Width="1.5" PointX="19.375" PointY="6.75" />
+        <EntityTypeShape EntityType="ConciergeModel.Hotels_DateFormat" Width="1.5" PointX="0.75" PointY="19.75" />
+        <EntityTypeShape EntityType="ConciergeModel.Hotels_Languages" Width="1.5" PointX="2.75" PointY="19.75" />
+        <EntityTypeShape EntityType="ConciergeModel.L_DateFormat" Width="1.5" PointX="19.75" PointY="14.75" />
+        <EntityTypeShape EntityType="ConciergeModel.L_WeekDay" Width="1.5" PointX="19.75" PointY="18.75" />
+        <EntityTypeShape EntityType="ConciergeModel.CurrencyConvert" Width="1.5" PointX="9.375" PointY="10.75" />
+        <EntityTypeShape EntityType="ConciergeModel.L_Currency" Width="1.5" PointX="10.375" PointY="14.75" />
+        <EntityTypeShape EntityType="ConciergeModel.Hotels_Currency" Width="1.5" PointX="7.375" PointY="14.75" />
+        <EntityTypeShape EntityType="ConciergeModel.EmailTemplate" Width="1.5" PointX="7.375" PointY="18.75" />
+        <EntityTypeShape EntityType="ConciergeModel.EmailTemplate" Width="1.5" PointX="7.375" PointY="14.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

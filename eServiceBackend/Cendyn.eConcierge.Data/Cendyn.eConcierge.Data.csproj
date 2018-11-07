@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AD227C16-92B7-4AC4-9661-D28CF3265A08}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cendyn.eConcierge.Data</RootNamespace>
+    <AssemblyName>Cendyn.eConcierge.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\QA\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Windsor.Lifestyles, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Windsor.Lifestyles.0.4.0\lib\net45\Castle.Windsor.Lifestyles.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RepositoryT, Version=0.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RepositoryT.0.2.3\lib\net45\RepositoryT.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CendynAdmin.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CendynAdmin.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CendynAdmin.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CendynAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CendynAdmin.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CendynAdmin.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ConciergeDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConciergeDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConciergeDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConciergeDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ConnectionStringBuilder.cs" />
+    <Compile Include="eConcierge_Company.cs">
+      <DependentUpon>CendynAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="eUpgrade_Company.cs">
+      <DependentUpon>CendynAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IConnectionStringBuilder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryDbContextLocator.cs" />
+    <Compile Include="RepositoryWindsorInstaller.cs" />
+    <Compile Include="Repository\CendynAdmin\Implementation\CendynAdminRepositoryImplement1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CendynAdminRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\CendynAdmin\Implementation\EConcierge_CompanyRepository.cs">
+      <DependentUpon>CendynAdminRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\CendynAdmin\Implementation\EUpgrade_CompanyRepository.cs">
+      <DependentUpon>CendynAdminRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\CendynAdmin\Interface\CendynAdminRepositoryInterface1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CendynAdminRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\CendynAdmin\Interface\IEConcierge_CompanyRepository.cs">
+      <DependentUpon>CendynAdminRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\CendynAdmin\Interface\IEUpgrade_CompanyRepository.cs">
+      <DependentUpon>CendynAdminRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\ConciergeDBRepositoryImplement.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\ConciergeHotelAccessMappingRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\ConciergeLoginRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\CurrencyConvertRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\DicBrandRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\DicChainRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\EmailTemplateRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\EUpgradeBrandCssMappingRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\EUpgradeInventoryRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\EUpgradeRequestRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\EUpgradeRequestRepositoryExt.cs" />
+    <Compile Include="Repository\eConcierge\Implementation\EUpgradeTransactionCodeRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\EventDescRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\FGuestRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\GuestPlannerRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\GuestPlannerRepositoryExt.cs" />
+    <Compile Include="Repository\eConcierge\Implementation\GuestPlanner_LogRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\GuestRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\HotelRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\HotelSettingRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\HotelSocialMediaRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\Hotels_CurrencyRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\Hotels_DateFormatRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\Hotels_LanguagesRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\Hotels_LanguagesRepositoryExt.cs" />
+    <Compile Include="Repository\eConcierge\Implementation\LanguageRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\L_CurrencyRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\L_DateFormatRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\L_WeekDayRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\PlannerEventRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\PlannerEventRepositoryExt.cs" />
+    <Compile Include="Repository\eConcierge\Implementation\RateTypeLogRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\RateTypeRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\RoomImageRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\RateTypeRepositoryExt.cs" />
+    <Compile Include="Repository\eConcierge\Implementation\RoomType_CodeRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\RoomType_CodeRepositoryExt.cs" />
+    <Compile Include="Repository\eConcierge\Implementation\SentEmailLogRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\SettingRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Implementation\SSOProductRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryImplement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\ConciergeDBRepositoryInterface.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IConciergeHotelAccessMappingRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IConciergeLoginRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\ICurrencyConvertRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IDicBrandRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IDicChainRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IEmailTemplateRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IEUpgradeBrandCssMappingRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IEUpgradeInventoryRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IEUpgradeRequestRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IEUpgradeRequestRepositoryExt.cs" />
+    <Compile Include="Repository\eConcierge\Interface\IEUpgradeTransactionCodeRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IEventDescRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IFGuestRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IGuestPlannerRepositoryExt.cs" />
+    <Compile Include="Repository\eConcierge\Interface\IGuestPlannerRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IGuestPlanner_LogRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IGuestRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IHotelRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IHotelSettingRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IHotelSocialMediaRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IHotels_CurrencyRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IHotels_DateFormatRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IHotels_LanguagesRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IHotels_LanguagesRepositoryExt.cs" />
+    <Compile Include="Repository\eConcierge\Interface\ILanguageRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IL_CurrencyRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IL_DateFormatRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IL_WeekDayRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IPlannerEventRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IPlannerEventRepositoryExt.cs" />
+    <Compile Include="Repository\eConcierge\Interface\IRateTypeLogRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IRateTypeRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IRoomImageRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IRateTypeRepositoryExt.cs.cs" />
+    <Compile Include="Repository\eConcierge\Interface\IRoomType_CodeRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\IRoomType_CodeRepositoryExt.cs" />
+    <Compile Include="Repository\eConcierge\Interface\ISentEmailLogRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\ISettingRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\eConcierge\Interface\ISSOProductRepository.cs">
+      <DependentUpon>ConciergeDBRepositoryInterface.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="ConciergeDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ConciergeDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="CendynAdmin.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CendynAdmin.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="CendynAdmin.edmx.diagram">
+      <DependentUpon>CendynAdmin.edmx</DependentUpon>
+    </None>
+    <None Include="ConciergeDB.edmx.diagram">
+      <DependentUpon>ConciergeDB.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Repository\CodeStringGenerator.ttinclude" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CendynAdmin.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CendynAdmin.edmx</DependentUpon>
+      <LastGenOutput>CendynAdmin.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CendynAdmin.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CendynAdmin.edmx</DependentUpon>
+      <LastGenOutput>CendynAdmin.cs</LastGenOutput>
+    </Content>
+    <Content Include="ConciergeDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ConciergeDB.edmx</DependentUpon>
+      <LastGenOutput>ConciergeDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Repository\CendynAdmin\Implementation\CendynAdminRepositoryImplement.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CendynAdminRepositoryImplement1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Repository\CendynAdmin\Interface\CendynAdminRepositoryInterface.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CendynAdminRepositoryInterface1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Repository\eConcierge\Implementation\ConciergeDBRepositoryImplement.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ConciergeDBRepositoryImplement.cs</LastGenOutput>
+    </Content>
+    <Content Include="Repository\eConcierge\Interface\ConciergeDBRepositoryInterface.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ConciergeDBRepositoryInterface.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cendyn.eConcierge.Core\Cendyn.eConcierge.Core.csproj">
+      <Project>{db5bcaf3-d837-4481-ab99-c0b5e37fd502}</Project>
+      <Name>Cendyn.eConcierge.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cendyn.eConcierge.EntityModel\Cendyn.eConcierge.EntityModel.csproj">
+      <Project>{7b6b7d55-e543-45d9-97d7-d552f621a2a8}</Project>
+      <Name>Cendyn.eConcierge.EntityModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

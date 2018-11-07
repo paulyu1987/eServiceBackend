@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3F5AA319-42E7-4816-9D5D-AB6A339DD050}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cendyn.eConcierge.Service</RootNamespace>
+    <AssemblyName>Cendyn.eConcierge.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\QA\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Facilities.Logging, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.LoggingFacility.3.3.0\lib\net45\Castle.Facilities.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Services.Logging.NLogIntegration, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core-NLog.3.3.0\lib\net45\Castle.Services.Logging.NLogIntegration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Windsor.Lifestyles, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Windsor.Lifestyles.0.4.0\lib\net45\Castle.Windsor.Lifestyles.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Cendyn.eContact.Infrastructure.Encryption">
+      <HintPath>..\Lib\Cendyn.eContact.Infrastructure.Encryption.dll</HintPath>
+    </Reference>
+    <Reference Include="DynaCache, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynaCache.1.07\lib\net40\DynaCache.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DynaCache.MemoryCache, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynaCache.1.07\lib\net40\DynaCache.MemoryCache.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.Extension, Version=1.2.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.Extension.1.2.0.1\lib\net45\NPOI.Extension.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.OOXML.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.OpenXml4Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RepositoryT, Version=0.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RepositoryT.0.2.3\lib\net45\RepositoryT.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.5840.25917, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.6\lib\net40\System.Linq.Dynamic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CenResModel\RoomInfo.cs" />
+    <Compile Include="ExcelModel\BusinessRuleExportExcelModel.cs" />
+    <Compile Include="ExcelModel\RateTypeExportExcelModel.cs" />
+    <Compile Include="ExcelModel\ReportExportExcelModel.cs" />
+    <Compile Include="ExcelModel\RequestExportExcelModel.cs" />
+    <Compile Include="ExcelModel\RoomTypeExportExcelModel.cs" />
+    <Compile Include="ExcelModel\UserExportExcelModel.cs" />
+    <Compile Include="Implement\BusinessRuleService.cs" />
+    <Compile Include="Implement\CenResService.cs" />
+    <Compile Include="Implement\CurrencyService.cs" />
+    <Compile Include="Implement\EmailSendService.cs" />
+    <Compile Include="Implement\ExcelHelper.cs" />
+    <Compile Include="Implement\GetReportInfoService.cs" />
+    <Compile Include="Implement\HotelSettingService.cs" />
+    <Compile Include="Implement\HotelSocialMediaService.cs" />
+    <Compile Include="Implement\ImagesService.cs" />
+    <Compile Include="Implement\ImportRoomDetailsService.cs" />
+    <Compile Include="Implement\ImportRuleDetailsService.cs" />
+    <Compile Include="Implement\LanguagesService.cs" />
+    <Compile Include="Implement\RateTypeService.cs" />
+    <Compile Include="Implement\RequestAvailableRoomService.cs" />
+    <Compile Include="Implement\RequestConfirmEmailService.cs" />
+    <Compile Include="Implement\GuestPlannerService.cs" />
+    <Compile Include="Implement\HotelService.cs" />
+    <Compile Include="Implement\PlannerEventService.cs" />
+    <Compile Include="Implement\RoomImageService.cs" />
+    <Compile Include="Implement\RoomTypeService.cs" />
+    <Compile Include="Implement\SendEmailService.cs" />
+    <Compile Include="Implement\SettingService.cs" />
+    <Compile Include="Implement\SSOProductService.cs" />
+    <Compile Include="Implement\TransactionCodeService.cs" />
+    <Compile Include="Implement\UserAccountService.cs" />
+    <Compile Include="Implement\UserManagementService.cs" />
+    <Compile Include="Interface\IAppConfig.cs" />
+    <Compile Include="Interface\IBusinessRuleService.cs" />
+    <Compile Include="Interface\ICenResService.cs" />
+    <Compile Include="Interface\ICurrencyService.cs" />
+    <Compile Include="Interface\IEmailGenerateService.cs" />
+    <Compile Include="Interface\IEmailSendService.cs" />
+    <Compile Include="Interface\IGuestPlannerService.cs" />
+    <Compile Include="Interface\IHotelService.cs" />
+    <Compile Include="Interface\IHotelSettingService.cs" />
+    <Compile Include="Interface\IHotelSocialMediaService.cs" />
+    <Compile Include="Interface\IImagesService.cs" />
+    <Compile Include="Interface\IImportRoomDetailsService.cs" />
+    <Compile Include="Interface\IImportRuleDetailsService.cs" />
+    <Compile Include="Interface\ILanguagesService.cs" />
+    <Compile Include="Interface\Interface1.cs" />
+    <Compile Include="Interface\IPlannerEventService.cs" />
+    <Compile Include="Interface\IRateTypeService.cs" />
+    <Compile Include="Interface\IReportInfoService.cs" />
+    <Compile Include="Interface\IRequestAvailableRoomService.cs" />
+    <Compile Include="Interface\IReservationService.cs" />
+    <Compile Include="Interface\IRoomImageService.cs" />
+    <Compile Include="Interface\IRoomTypeService.cs" />
+    <Compile Include="Interface\ISettingService.cs" />
+    <Compile Include="Interface\ISSOProductService.cs" />
+    <Compile Include="Interface\ITransactionCodeService.cs" />
+    <Compile Include="Interface\IUserAccountService.cs" />
+    <Compile Include="Interface\IUserManagementService.cs" />
+    <Compile Include="ServiceBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Implement\ReservationService.cs" />
+    <Compile Include="ServiceWindsorInstaller.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cendyn.eConcierge.Core\Cendyn.eConcierge.Core.csproj">
+      <Project>{db5bcaf3-d837-4481-ab99-c0b5e37fd502}</Project>
+      <Name>Cendyn.eConcierge.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cendyn.eConcierge.Data\Cendyn.eConcierge.Data.csproj">
+      <Project>{ad227c16-92b7-4ac4-9661-d28cf3265a08}</Project>
+      <Name>Cendyn.eConcierge.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cendyn.eConcierge.EntityModel\Cendyn.eConcierge.EntityModel.csproj">
+      <Project>{7b6b7d55-e543-45d9-97d7-d552f621a2a8}</Project>
+      <Name>Cendyn.eConcierge.EntityModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
