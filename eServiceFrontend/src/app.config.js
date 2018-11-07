@@ -14,7 +14,7 @@ export default {
     },
   },
   token:{
-    authTokenValue: 'dGVzdDoxMjM='
+    authTokenValue: 'aa dGVzdDoxMjM='
   },
   
 }

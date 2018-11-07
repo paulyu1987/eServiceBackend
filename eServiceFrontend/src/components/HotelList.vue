@@ -2,7 +2,7 @@
   <div>
     {{hotelName}}
     <select v-model="selectedHotel">
-        <option v-for="item in items" v-bind:value="item.ID">{{item.Name}}</option>
+        <option v-for="item in items" v-bind:value="item.ID">{{item.Hotel_Name}}</option>
     </select>
   </div>
 </template>
