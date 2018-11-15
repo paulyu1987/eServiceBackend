@@ -84,6 +84,45 @@ namespace Cendyn.eConcierge.Service.Implement
             
         }
 
+        public IList<ListItemDTO> TestVue_GetRateTypeListByHotelCode(string hotel_code)
+        {
+            //var query = from rt in ratetypeRepo.GetAll()
+            //            select new { rt };
+
+            //if (!string.IsNullOrWhiteSpace(hotel_code))
+            //{
+            //    query = query.Where(p => p.rt.HotelCode == hotel_code);
+            //}
+
+            if (!string.IsNullOrWhiteSpace(hotel_code))
+            {
+                var list = (from rt in ratetypeRepo.GetAll()
+                            where rt.ActiveYN == true && rt.HotelCode == hotel_code
+                            join hotel in hotelRepo.GetAll() on rt.HotelCode equals hotel.Hotel_Code
+                            select new ListItemDTO()
+                            {
+                                DisplayName = rt.RateTypeCodeDescription,
+                                Value = rt.ID.ToString()
+                            }).ToList();
+                return list;
+            }
+            else
+            {
+                var list1 = (from rt in ratetypeRepo.GetAll()
+                             where rt.ActiveYN == true
+                             join hotel in hotelRepo.GetAll() on rt.HotelCode equals hotel.Hotel_Code
+                             select new ListItemDTO()
+                             {
+                                 DisplayName = rt.RateTypeCodeDescription,
+                                 Value = rt.HotelCode + "," + rt.RateTypeCode
+                             }).ToList();
+                return list1;
+            }
+
+
+
+        }
+
         //public IList<RateTypeSearchResultDTO> getRateTypeBySearchCriteria(RateTypeSearchCriteriaDTO searchCriteria, PagingInformation pageInfo)
         //{
         //    IList<string> hotelCodeList = userAccountService.GetUserMappedHotelCodes(searchCriteria.UserName);

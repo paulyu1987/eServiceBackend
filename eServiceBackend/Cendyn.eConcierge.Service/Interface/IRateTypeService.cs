@@ -15,6 +15,7 @@ namespace Cendyn.eConcierge.Service.Interface
         string UpdateActiveYNByRateTypeID(int RateTypeID, string userName, int operation);
 
         IList<ListItemDTO> GetRateTypeListByHotelCode(string hotelCode);
+        IList<ListItemDTO> TestVue_GetRateTypeListByHotelCode(string hotelCode);
         bool UpdateByRateType(NewRateTypeSaveDTO data);
 
         byte[] GenerateRateTypeExcelBySearchCriteria(RateTypeSearchCriteriaDTO searchCriteria, PagingInformation pageInfo);

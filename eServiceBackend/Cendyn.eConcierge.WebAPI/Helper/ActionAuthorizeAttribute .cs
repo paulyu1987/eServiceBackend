@@ -14,7 +14,7 @@ namespace Cendyn.eConcierge.WebApi.Helper
         {
             //check ticket from http header
             var domainanme = actionContext.Request;
-            var authorization = actionContext.Request.Headers.Authorization;       
+            var authorization = actionContext.Request.Headers.Authorization;
             if ((authorization != null) && (authorization.Parameter != null))
             {
                 //encrypt ticket,check user
@@ -31,10 +31,11 @@ namespace Cendyn.eConcierge.WebApi.Helper
             //if ticket is null,return 401
             else
             {
-                var attributes = actionContext.ActionDescriptor.GetCustomAttributes<AllowAnonymousAttribute>().OfType<AllowAnonymousAttribute>();
-                bool isAnonymous = attributes.Any(a => a is AllowAnonymousAttribute);
-                if (isAnonymous) base.OnAuthorization(actionContext);
-                else HandleUnauthorizedRequest(actionContext);
+                base.IsAuthorized(actionContext);
+                //var attributes = actionContext.ActionDescriptor.GetCustomAttributes<AllowAnonymousAttribute>().OfType<AllowAnonymousAttribute>();
+                //bool isAnonymous = attributes.Any(a => a is AllowAnonymousAttribute);
+                //if (isAnonymous) base.OnAuthorization(actionContext);
+                //else HandleUnauthorizedRequest(actionContext);
             }
         }
 

@@ -5,8 +5,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Cendyn.eConcierge.Service.Interface;
-using System.Web.Mvc;
 using Cendyn.eConcierge.EntityModel;
+using Newtonsoft.Json;
 
 namespace Cendyn.eConcierge.WebApi.Controllers
 {
@@ -15,20 +15,30 @@ namespace Cendyn.eConcierge.WebApi.Controllers
         public IHotelService hotelService { get; set; }
         public IUserAccountService userAccountService { get; set; }
         public IRateTypeService rateTypeService { get; set; }
+        public class NewRateTypeModel
+        {
+            public int id { get; set; }
+            public string HotelCode { get; set; }
+            public string RateTypeCode { get; set; }
+            public string RateTypeCodeDescription { get; set; }
+            public DateTime InsertDate { get; set; }
+            public DateTime UpdateDate { get; set; }
+            public bool ActiveYN { get; set; }
+        }
 
         // GET api/values
-        public IEnumerable<Hotel> Get()
+        public IEnumerable<ListItemDTO> Get()
         {
-            var hotelList = hotelService.GetAllHotels();
-            
-            return hotelList.ToArray();
+            //var hotelList = hotelService.GetAllHotels();
+
+            var rateTypeList = rateTypeService.TestVue_GetRateTypeListByHotelCode("AABB");
+            return rateTypeList.ToArray();
         }
 
         // GET api/values/5
         public string Get(int id)
         {
             var hotelList = userAccountService.GetUserMappedHotels("test@cendyn.com");
-            hotelService = DependencyResolver.Current.GetService(typeof(IHotelService)) as IHotelService;
             var hotel = hotelService.GetHotelByDomain("http://" + "AABB.qaeupgrade.cendyn.com");
 
             return "test vue get";
@@ -36,14 +46,44 @@ namespace Cendyn.eConcierge.WebApi.Controllers
 
         // POST api/values
         [System.Web.Http.AllowAnonymous]
-        public string Post([FromBody]string value)
+        [HttpPost]
+        public string Post(NewRateTypeModel model)
         {
-            var rateTypeList = rateTypeService.GetRateTypeListByHotelCode("");
-            var hotelList = userAccountService.GetUserMappedHotels("test@cendyn.com");
-            var dateformat = hotelService.GetDateFormat("test");
+            if(model.RateTypeCode == "delete")
+            {
+                string result = rateTypeService.UpdateActiveYNByRateTypeID(model.id, "test@cendyn.com",0);
+                if(string.IsNullOrEmpty(result))
+                {
+                    return "The rate type has been successfully deleted.";
+                }
+                else
+                {
+                    return "The rate type failed to be deleted. Please try again latter.";
+                }
+            }
+            else
+            {
+                NewRateTypeSaveDTO newRateTypeData = new NewRateTypeSaveDTO();
+
+                newRateTypeData.ID = model.id;
+                newRateTypeData.RateTypeCode = model.RateTypeCode;
+                newRateTypeData.RateTypeCodeDescription = model.RateTypeCode;
+                newRateTypeData.HotelCode = "AABB";
+                newRateTypeData.ActiveYN = true;
+
+                bool result = rateTypeService.UpdateByRateType(newRateTypeData);
+                if (result)
+                {
+                    return "The rate type has been successfully updated.";
+                }
+                else
+                {
+                    return "The rate type failed to be saved. Please try again latter.";
+                }
+            }
+            
 
 
-            return "test vue post";
         }
 
         // PUT api/values/5

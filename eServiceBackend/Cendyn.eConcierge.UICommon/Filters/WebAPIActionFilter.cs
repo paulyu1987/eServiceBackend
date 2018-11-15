@@ -17,16 +17,16 @@ namespace Cendyn.eConcierge.UICommon.Filters
     {
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
-            string domainName = actionContext.Request.Headers.Authorization.Scheme;
-            //string domainName = DomainHelper.GetCurrentDomain();
+            //string domainName = actionContext.Request.Headers.Authorization.Scheme;
+            string domainName = DomainHelper.GetCurrentDomain();
 
 #if DEBUG
             //domainName = "qaeupgrade-sandylane.cendyn.com";
-            //if (domainName.ToLower().Contains("localhost"))
+            if (domainName.ToLower().Contains("localhost"))
                 //domainName = string.IsNullOrWhiteSpace(ConfigurationManager.AppSettings["LocalDomainName"]) ? "qaeupgrade-sandylane.cendyn.com" : ConfigurationManager.AppSettings["LocalDomainName"];
                 //domainName = string.IsNullOrWhiteSpace(ConfigurationManager.AppSettings["LocalDomainName"]) ? "pgaresort.managemyupgrade.com" : ConfigurationManager.AppSettings["LocalDomainName"];
                 //domainName = string.IsNullOrWhiteSpace(ConfigurationManager.AppSettings["LocalDomainName"]) ? "eupgrade-origami.cendyn.com" : ConfigurationManager.AppSettings["LocalDomainName"];
-                //domainName = string.IsNullOrWhiteSpace(ConfigurationManager.AppSettings["LocalDomainName"]) ? "RVMELB.qaeupgrade.cendyn.com" : ConfigurationManager.AppSettings["LocalDomainName"];
+                domainName = string.IsNullOrWhiteSpace(ConfigurationManager.AppSettings["LocalDomainName"]) ? "RVMELB.qaeupgrade.cendyn.com" : ConfigurationManager.AppSettings["LocalDomainName"];
             //domainName = string.IsNullOrWhiteSpace(ConfigurationManager.AppSettings["LocalDomainName"]) ? "hoteldel.managemyupgrade.cendyn.com" : ConfigurationManager.AppSettings["LocalDomainName"];
 #endif
             var domaininfo = DependencyResolver.Current.GetService(typeof(DomainInformationModel)) as DomainInformationModel;
