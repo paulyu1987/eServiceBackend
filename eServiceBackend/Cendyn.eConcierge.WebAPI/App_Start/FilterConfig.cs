@@ -1,5 +1,4 @@
-﻿using Cendyn.eConcierge.UICommon.Filters;
-using Cendyn.eConcierge.WebApi.Helper;
+﻿using Cendyn.eConcierge.WebApi.Helper;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Http.Filters;

@@ -281,11 +281,13 @@
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Filters\HotelInformationFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\ActionAuthorizeAttribute .cs" />
     <Compile Include="Helper\WindsorCompositionRoot.cs" />
+    <Compile Include="Helper\WindsorDependencyResolver.cs" />
     <Compile Include="Installers\ControllersInstaller.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -327,6 +329,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\11.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -381,10 +384,6 @@
     <ProjectReference Include="..\Cendyn.eConcierge.Service\Cendyn.eConcierge.Service.csproj">
       <Project>{3f5aa319-42e7-4816-9d5d-ab6a339dd050}</Project>
       <Name>Cendyn.eConcierge.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Cendyn.eConcierge.UICommon\Cendyn.eConcierge.UICommon.csproj">
-      <Project>{bfef5d31-a90e-44b4-9381-9447b1f5ffb9}</Project>
-      <Name>Cendyn.eConcierge.UICommon</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

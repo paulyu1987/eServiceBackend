@@ -7,8 +7,8 @@ using AppConfigFacility;
 
 namespace Cendyn.eConcierge.WebApi.Installers
 {
+    using Helper;
     using Plumbing;
-    using Cendyn.eConcierge.UICommon;
     using System.Web.Http;
 
     public class ControllersInstaller : IWindsorInstaller

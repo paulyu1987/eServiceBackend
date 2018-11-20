@@ -6,14 +6,16 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Cendyn.eConcierge.WebApi.Helper;
-using Cendyn.eConcierge.UICommon.Filters;
+using Cendyn.eConcierge.WebApi.Filters;
+using Cendyn.eConcierge.EntityModel;
 
 namespace Cendyn.eConcierge.WebApi.Controllers
 {
-    [WebAPIActionFilter]
+    [HotelInformationFilter]
     [ActionAuthorize]
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class BaseApiController : ApiController
     {
+        public Hotel HotelInformation { get; set; }
     }
 }

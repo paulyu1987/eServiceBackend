@@ -30,8 +30,8 @@ namespace Cendyn.eConcierge.WebApi.Controllers
         public IEnumerable<ListItemDTO> Get()
         {
             //var hotelList = hotelService.GetAllHotels();
-
-            var rateTypeList = rateTypeService.TestVue_GetRateTypeListByHotelCode("AABB");
+            var hotel = this.HotelInformation;
+            var rateTypeList = rateTypeService.TestVue_GetRateTypeListByHotelCode(this.HotelInformation.Hotel_Code);
             return rateTypeList.ToArray();
         }
 
@@ -68,7 +68,7 @@ namespace Cendyn.eConcierge.WebApi.Controllers
                 newRateTypeData.ID = model.id;
                 newRateTypeData.RateTypeCode = model.RateTypeCode;
                 newRateTypeData.RateTypeCodeDescription = model.RateTypeCode;
-                newRateTypeData.HotelCode = "AABB";
+                newRateTypeData.HotelCode = this.HotelInformation.Hotel_Code;
                 newRateTypeData.ActiveYN = true;
 
                 bool result = rateTypeService.UpdateByRateType(newRateTypeData);
@@ -81,9 +81,6 @@ namespace Cendyn.eConcierge.WebApi.Controllers
                     return "The rate type failed to be saved. Please try again latter.";
                 }
             }
-            
-
-
         }
 
         // PUT api/values/5

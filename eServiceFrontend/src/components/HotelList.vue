@@ -39,6 +39,7 @@ export default {
       items:[],
       selectedHotel:'',
       editHotelName:'',
+      addHotelName:'',
       returnmessage:''
     }
   },

@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 
 
-namespace Cendyn.eConcierge.UICommon
+namespace Cendyn.eConcierge.WebApi.Helper
 {
     public class WindsorDependencyResolver : IDependencyResolver
     {
