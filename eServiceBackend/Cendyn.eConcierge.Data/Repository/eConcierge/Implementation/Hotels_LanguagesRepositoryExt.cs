@@ -39,6 +39,7 @@ namespace Cendyn.eConcierge.Data.Repository.eConcierge.Implementation
             {
                 var query = (from hl in this.DataContext.Hotels_Languages
                              join l in this.DataContext.Languages on hl.LanguageID equals l.LanguageID
+                             orderby hl.SortOrder 
                              where l.Active == true && hl.Active == true && hl.Hotel_Code == hotelCode
                              select new ListItemDTO
                              {

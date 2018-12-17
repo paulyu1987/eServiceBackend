@@ -147,6 +147,7 @@
     <Compile Include="Implement\EmailSendService.cs" />
     <Compile Include="Implement\ExcelHelper.cs" />
     <Compile Include="Implement\GetReportInfoService.cs" />
+    <Compile Include="Implement\EmailTemplateService.cs" />
     <Compile Include="Implement\HotelSettingService.cs" />
     <Compile Include="Implement\HotelSocialMediaService.cs" />
     <Compile Include="Implement\ImagesService.cs" />
@@ -174,6 +175,7 @@
     <Compile Include="Interface\IEmailGenerateService.cs" />
     <Compile Include="Interface\IEmailSendService.cs" />
     <Compile Include="Interface\IGuestPlannerService.cs" />
+    <Compile Include="Interface\IEmailTemplateService.cs" />
     <Compile Include="Interface\IHotelService.cs" />
     <Compile Include="Interface\IHotelSettingService.cs" />
     <Compile Include="Interface\IHotelSocialMediaService.cs" />

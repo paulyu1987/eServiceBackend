@@ -36,5 +36,6 @@ namespace Cendyn.eConcierge.Service.Implement
 
             return langs;
         }
+
     }
 }

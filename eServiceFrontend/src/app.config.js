@@ -12,6 +12,15 @@ export default {
     hotels: {
       endpoint: baseUri + 'values/'
     },
+     hotellanguages: {
+      endpoint: baseUri + 'hotellanguages/'
+    },
+    uploadimage: {
+      endpoint: baseUri + 'image/'
+    },
+    emailtemplates: {
+      endpoint: baseUri + 'emailtemplates/'
+    },
   },
   token:{
     authTokenValue: 'basic dGVzdDoxMjM='
