@@ -1,16 +1,16 @@
 <template lang="html">
     <div class="m-colorPicker" ref="colorPicker" v-on:click="event => { event.stopPropagation() }">
-        <!-- 颜色显示小方块 -->
+        
         <div class="colorBtn"
              v-bind:style="`background-color: ${showColor}`"
              v-on:click="openStatus = !disabled" 
              v-bind:class="{ disabled: disabled }"></div>
-        <!-- 用以激活HTML5颜色面板 -->
+        
         <input type="color"
                ref="html5Color"
                v-model="html5Color"
                v-on:change="updataValue(html5Color)">
-        <!-- 颜色色盘 -->
+        
         <div class="box" v-bind:class="{ open: openStatus }">
             <div class="hd">
                 <div class="colorView" v-bind:style="`background-color: ${showPanelColor}`"></div>
@@ -218,8 +218,8 @@
     }
 
     .m-colorPicker .colorBtn {
-        width: 15px;
-        height: 15px;
+        width: 30px;
+        height: 30px;
         border: 1px solid #DEE0E7;
         margin-top: 2px;
         margin-left: 15px;

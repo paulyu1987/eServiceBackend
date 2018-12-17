@@ -1,18 +1,11 @@
 <template>
-  <div>
+  <div class="select-lang">
 
      {{selectLanguage}}
     <select v-model="selectedLanguage" @change="onSelectedLanguage()">
         <option v-for="item in items" v-bind:value="item.Value">{{item.DisplayName}}</option>
     </select>
     </br></br>
-
-    {{ dateformat }}
-
-
-    <div class="returnmessage">
-      <span>{{returnmessage}}  </span>
-    </div>
 
   </div>
 </template>
@@ -85,5 +78,9 @@ a {
 .returnmessage{
   padding-top:100px;
   color:red;
+}
+.select-lang{
+  text-align:right;
+  padding-right:78px;
 }
 </style>

@@ -1,5 +1,6 @@
 <template>
 
+
 <div id="ExportEmailTemplate">
     <table class="wrapper" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#e5e5e5" style="padding-top: 30px; padding-bottom: 30px;" align="center">
 
@@ -168,6 +169,13 @@ export default {
 </script>
 
 <style scoped>
+
+  #ExportEmailTemplate{
+    display:inline-block; 
+    border: 1px solid #0003;
+    background:#0001;
+    padding: 50px 50px 50px 50px;
+  }
         .ExternalClass {
             width: 100%;
         }

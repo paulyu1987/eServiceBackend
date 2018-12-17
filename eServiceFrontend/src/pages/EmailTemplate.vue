@@ -2,7 +2,7 @@
   <div>
 
 <b-tabs>
-  <b-tab title="first" active>
+  <!-- <b-tab title="first" active>
     <SelectLanguage></SelectLanguage>
   </b-tab>
 
@@ -12,26 +12,25 @@
 
   <b-tab title="three" >  
    <button class="btn" :style="{'background-color': color  }" ><i class="fa fa-check"></i> bbb</button>
-   <!-- <span :style="{'color': color  }"> {{ textarea }} </span> -->
+   
     <color-picker v-model="color" v-on:change="headleChangeColor"></color-picker>
   </b-tab>
 
   <b-tab title="fourth" >  
      <ColorPainter></ColorPainter>
      <TestVuex></TestVuex>
-  </b-tab>
+  </b-tab> -->
 
 
-  <b-tab title="fifth" >  
+  <b-tab title="Email" active> 
+  <div> 
+    <SelectLanguage></SelectLanguage>
      <ColorPainter></ColorPainter>
 
      <Email></Email>
+     </div>
   </b-tab>
 
-
-  <b-tab title="disabled" disabled>
-    <br>Disabled tab!
-  </b-tab>
 </b-tabs>
 
   </div>
